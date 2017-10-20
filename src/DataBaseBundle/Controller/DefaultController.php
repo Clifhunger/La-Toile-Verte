@@ -22,6 +22,7 @@ class DefaultController extends Controller
     {
         $user = new User();
 
+        // Création du formulaire
         $form = $this->createFormBuilder($user)
         ->add('name', TextType::class, array('label' => 'Prenom', 'required' => true))
         ->add('lastName', TextType::class, array('label' => 'Nom', 'required' => true))
@@ -33,26 +34,38 @@ class DefaultController extends Controller
                 'Élève' => 'eleve',
                 'Professeur' => 'prof'
             ),
-            'expanded' => false,
-            'multiple' => false,
             'required' => true,
         ))
         ->add('school', TextType::class, array('label' => 'Établissement', 'required' => true))
         ->add('signin', SubmitType::class, array('label' => 'S\'inscrire'))
         ->getForm();
 
+        // Vérification du formulaire
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $repository = $this->getDoctrine()
+            ->getRepository(User::class);
 
-            return $this->redirectToRoute('signin_success');
+            if ($repository->findOneByEmail($user->getEmail())) {
+                return $this->render('DataBaseBundle:Default:signin.html.twig', array(
+                    'form' => $form->createView(),
+                    'valid' => false,
+                ));
+            } else {
+                // Création et éxecution de la requête d'insertion en BD
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                // Redirection vers la page de succès
+                return $this->redirectToRoute('signin_success');
+            }
         }
         return $this->render('DataBaseBundle:Default:signin.html.twig', array(
             'form' => $form->createView(),
+            'valid' => true,
         ));
     }
 
