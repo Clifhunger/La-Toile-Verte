@@ -16,7 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/signin")
+     * @Route("/signin", name="signin")
      */
     public function signInAction(Request $request)
     {
