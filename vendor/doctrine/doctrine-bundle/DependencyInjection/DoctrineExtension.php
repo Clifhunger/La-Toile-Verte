@@ -47,6 +47,11 @@ class DoctrineExtension extends AbstractDoctrineExtension
     private $defaultConnection;
 
     /**
+     * @var array
+     */
+    private $entityManagers;
+
+    /**
      * @var SymfonyBridgeAdapter
      */
     private $adapter;
@@ -84,20 +89,6 @@ class DoctrineExtension extends AbstractDoctrineExtension
 
             $this->ormLoad($config['orm'], $container);
         }
-
-        if (PHP_VERSION_ID < 70000) {
-            $this->addClassesToCompile(array(
-                'Doctrine\\Common\\Annotations\\DocLexer',
-                'Doctrine\\Common\\Annotations\\FileCacheReader',
-                'Doctrine\\Common\\Annotations\\PhpParser',
-                'Doctrine\\Common\\Annotations\\Reader',
-                'Doctrine\\Common\\Lexer',
-                'Doctrine\\Common\\Persistence\\ConnectionRegistry',
-                'Doctrine\\Common\\Persistence\\Proxy',
-                'Doctrine\\Common\\Util\\ClassUtils',
-                'Doctrine\\Bundle\\DoctrineBundle\\Registry',
-            ));
-        }
     }
 
     /**
@@ -123,7 +114,6 @@ class DoctrineExtension extends AbstractDoctrineExtension
         $this->defaultConnection = $config['default_connection'];
 
         $container->setAlias('database_connection', sprintf('doctrine.dbal.%s_connection', $this->defaultConnection));
-        $container->getAlias('database_connection')->setPublic(true);
         $container->setAlias('doctrine.dbal.event_manager', new Alias(sprintf('doctrine.dbal.%s_connection.event_manager', $this->defaultConnection), false));
 
         $container->setParameter('doctrine.dbal.connection_factory.types', $config['types']);
@@ -211,6 +201,11 @@ class DoctrineExtension extends AbstractDoctrineExtension
                 $connection['mapping_types'],
             ))
         ;
+
+        // Set class in case "wrapper_class" option was used to assist IDEs
+        if (isset($options['wrapperClass'])) {
+            $def->setClass($options['wrapperClass']);
+        }
 
         if (!empty($connection['use_savepoints'])) {
             $def->addMethodCall('setNestTransactionsWithSavepoints', array($connection['use_savepoints']));
@@ -334,14 +329,14 @@ class DoctrineExtension extends AbstractDoctrineExtension
             $container->getDefinition('form.type.entity')->addTag('kernel.reset', array('method' => 'reset'));
         }
 
-        $entityManagers = array();
+        $this->entityManagers = array();
         foreach (array_keys($config['entity_managers']) as $name) {
-            $entityManagers[$name] = sprintf('doctrine.orm.%s_entity_manager', $name);
+            $this->entityManagers[$name] = sprintf('doctrine.orm.%s_entity_manager', $name);
         }
-        $container->setParameter('doctrine.entity_managers', $entityManagers);
+        $container->setParameter('doctrine.entity_managers', $this->entityManagers);
 
         if (empty($config['default_entity_manager'])) {
-            $tmp = array_keys($entityManagers);
+            $tmp = array_keys($this->entityManagers);
             $config['default_entity_manager'] = reset($tmp);
         }
         $container->setParameter('doctrine.default_entity_manager', $config['default_entity_manager']);
@@ -352,7 +347,6 @@ class DoctrineExtension extends AbstractDoctrineExtension
         }
 
         $container->setAlias('doctrine.orm.entity_manager', sprintf('doctrine.orm.%s_entity_manager', $config['default_entity_manager']));
-        $container->getAlias('doctrine.orm.entity_manager')->setPublic(true);
 
         $config['entity_managers'] = $this->fixManagersAutoMappings($config['entity_managers'], $container->getParameter('kernel.bundles'));
 
@@ -817,7 +811,7 @@ class DoctrineExtension extends AbstractDoctrineExtension
     /**
      * @return string
      */
-    private function getDefinitionClassname()
+    private function getDefinitionClassname(): string
     {
         return class_exists(ChildDefinition::class) ? ChildDefinition::class : DefinitionDecorator::class;
     }
