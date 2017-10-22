@@ -14,4 +14,12 @@ class DefaultController extends Controller
     {
         return $this->render('FrontBundle:Default:home.html.twig');
     }
+
+    /**
+     *  @Route("/test", name="test")
+     */
+    public function connexionAction()
+    {
+        return $this->render('FrontBundle:Default:connexion.html.twig');
+    }
 }

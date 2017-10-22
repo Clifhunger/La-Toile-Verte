@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
     <div class="container connexion">
         <div class="row">
             <div class="col-lg-1">
@@ -13,13 +12,14 @@
                 </div>
             </div>
 
-                <div class="col-lg-4 rr rr-right">
+            <a href="{{ path('signin') }}" class="col-lg-4 rr rr-right" style="text-decoration: none;">
+                <div>
                     <div>
                         <h2>S'inscrire</h2>
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
                     </div>
-
                 </div>
+            </a>
         </div>
     </div>
 {% endblock %}
