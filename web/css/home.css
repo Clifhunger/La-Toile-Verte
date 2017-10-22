@@ -1,0 +1,73 @@
+
+.connexion{
+    margin-top: 150px;
+}
+
+h2 { margin-top: 20px !important;  color: white !important; }
+.rr > div  { text-align: center;   color: white !important;}
+
+
+.rr {
+    position: relative;
+    height: 200px;
+    background-color: forestgreen;
+    opacity: 0.8;
+    transition-duration: 0.5s;
+
+}
+.rr-left {
+         z-index: 1;
+         float: left;
+         width: 55%;
+    margin-right: 15px;
+ }
+.rr-right {
+     z-index: 2;
+     float: right;
+     width: 44%;
+    margin-left: 15px;
+}
+
+   .rr:after,
+   .rr:before {
+       content: "";
+       position: absolute;
+       top: 0;
+       width: 0;
+       height: 0;
+   }
+.rr-left:after {
+    right: -10px;
+    border-left: 100px solid forestgreen;
+    border-bottom: 200px solid white;
+
+}
+.rr-right:before {
+    left: -100px;
+    border-right: 100px solid forestgreen;
+    border-top: 200px solid rgba(0, 0, 0, 0);
+}
+
+   .rr-left > div {
+       margin-right: 100px;
+       margin-left: 50px;
+   }
+.rr-right > div {
+    margin-right: 50px;
+    margin-left: 25px;
+}
+
+.rr:hover{
+    opacity: 1;
+
+}
+.rr-right:hover{
+    transform:scale(1) translateX(50px);
+    transition-duration: 1s;
+
+}
+.rr-left:hover{
+    transform:scale(1) translateX(-50px);
+    transition-duration: 1s;
+
+}

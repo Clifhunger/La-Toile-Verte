@@ -1,0 +1,37 @@
+footer
+{
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    padding-top: 10px;
+    background-color: #269b26;
+}
+header{
+    background-color: #269b26;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.nav-link{
+    color: white !important;
+}
+.nav-item{
+    font-size: 1.5em !important;
+    margin-left: 25px;
+    margin-right: 25px;
+
+}
+.navbar-brand{
+    margin-left: 15px;
+    margin-right: 2rem !important;
+}
+
+body{
+    background-image: url("test4.png");
+    background-color: white;
+    background-repeat:no-repeat;
+}
+collapse{
+}
+
