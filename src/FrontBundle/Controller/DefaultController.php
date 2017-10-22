@@ -16,7 +16,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/test", name="test")
+     *  @Route("/connexion", name="connexion")
      */
     public function connexionAction()
     {
