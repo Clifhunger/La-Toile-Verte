@@ -95,7 +95,7 @@ Main components
   /* this is the vertical line */
   content: '';
   position: absolute;
-  top: -30px;
+  top: 70px;
   left: 18px;
   height: 83%;
   width: 6px;
@@ -173,6 +173,7 @@ Main components
     height: 35px;
     left: 50%;
     margin-left: -17.5px;
+    margin-top: 150px;
     /* Force Hardware Acceleration in WebKit */
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
@@ -329,7 +330,7 @@ Main components
   .cd-timeline-content {
     margin-left: 0;
     padding: 1.6em;
-    width: 45%;
+    width: 39%;
   }
   .cd-timeline-content::before {
     top: 24px;
@@ -342,7 +343,7 @@ Main components
   }
   .cd-timeline-content .cd-date {
     position: absolute;
-    left: 122%;
+    left: 150%;
     top: 2px;
     font-size: 24px;
     font-size: 1.5rem;
@@ -363,7 +364,7 @@ Main components
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
-    right: 122%;
+    right: 150%;
     text-align: right;
     width: 100px;
   }
