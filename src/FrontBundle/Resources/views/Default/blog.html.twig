@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+   <section id="cd-timeline" class="cd-container">
+              <div  class="cd-timeline-block">
+                 <div class="cd-timeline-img cd-picture">
+                 </div> <!-- cd-timeline-img -->
+
+                 <div  class="cd-timeline-content">
+                   <h1>it s me</h1>
+
+                       <span class="cd-date" style="padding-bottom:0px">01/01/01</span>
+
+                 </div> <!-- cd-timeline-content -->
+
+              </div> <!-- cd-timeline-block -->
+       <div  class="cd-timeline-block">
+           <div class="cd-timeline-img cd-picture">
+           </div> <!-- cd-timeline-img -->
+
+           <div  class="cd-timeline-content">
+               <h1>it s me</h1>
+
+               <span class="cd-date" style="padding-bottom:0px">01/01/01</span>
+
+           </div> <!-- cd-timeline-content -->
+
+       </div> <!-- cd-timeline-block -->
+
+
+   </section> <!-- cd-timeline -->
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/timeline/css/reset.css') }}"> <!-- CSS reset -->
+    <link rel="stylesheet" href="{{ asset('css/timeline/css/style.css')}}"> <!-- Resource style -->
+{% endblock %}

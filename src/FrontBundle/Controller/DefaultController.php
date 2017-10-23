@@ -22,4 +22,14 @@ class DefaultController extends Controller
     {
         return $this->render('FrontBundle:Default:connexion.html.twig');
     }
+
+
+    /**
+     *  @Route("/blog", name="blog")
+     */
+    public function BlogAction()
+    {
+        return $this->render('FrontBundle:Default:blog.html.twig');
+    }
+
 }
