@@ -28,6 +28,7 @@
 
 # Vendor
 /vendor/*
+/vendor/composer/*
 
 # Assets and user uploads
 /web/bundles/
