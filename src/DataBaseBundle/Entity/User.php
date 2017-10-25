@@ -2,100 +2,107 @@
 
 namespace DataBaseBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="DataBaseBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
-     * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
-    /**
-     * @var string
+     /**
+     * @ORM\Column(type="string", length=255)
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="Entrez votre prénom", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="Le prénom est trop court.",
+     *     maxMessage="Le prénom est trop long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
-    private $name;
+    protected $fisrtName;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=255)
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
+     * @Assert\NotBlank(message="Entrez votre nom", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="Le nom est trop court.",
+     *     maxMessage="Le nom est trop long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $lastName;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=255)
      *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=255)
+     * @Assert\NotBlank(message="Choisissez votre rôle", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     max=255,
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $role;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=255)
      *
-     * @ORM\Column(name="school", type="string", length=255)
+     * @Assert\NotBlank(message="Renseignez votre établissement", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="Le nom de l'établissement est trop court.",
+     *     maxMessage="Le nom de l'établissement est trop long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $school;
 
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        parent::__construct();
+        // your own logic
     }
 
     /**
-     * Set name
+     * Set fisrtName
      *
-     * @param string $name
+     * @param string $fisrtName
      *
      * @return User
      */
-    public function setName($name)
+    public function setfisrtName($fisrtName)
     {
-        $this->name = $name;
+        $this->fisrtName = $fisrtName;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get fisrtName
      *
      * @return string
      */
-    public function getName()
+    public function getfisrtName()
     {
-        return $this->name;
+        return $this->fisrtName;
     }
 
     /**
@@ -120,54 +127,6 @@ class User
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
@@ -218,4 +177,3 @@ class User
         return $this->school;
     }
 }
-

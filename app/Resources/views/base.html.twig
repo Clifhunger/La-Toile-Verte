@@ -34,10 +34,11 @@
 
                 <br/>
             </div>
-            <small style="position:fixed;top:10px;right:10px;"><a href="{{ path('signin') }}" style="color: white;">S'inscrire</a></small>
         </nav>
+        {% block user_info %}
+        {% endblock %}
     </header>
-        {% block body %}
+        {% block fos_user_content %}
         {% endblock %}
 <!-- <footer>
             <div class="row">
