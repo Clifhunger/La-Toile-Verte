@@ -29,6 +29,7 @@
 # Vendor
 /vendor/*
 /vendor/composer/*
+!/vendor/friendsofsymfony/user-bundle/**
 
 # Assets and user uploads
 /web/bundles/
