@@ -1,0 +1,15 @@
+#fos_user_registration_form_plainPassword_first{
+    margin-bottom: 16px;
+}
+
+.register{
+    padding: 30px;
+    margin-top: 100px;
+    border-top: solid 3px;
+    border-bottom: solid 3px;
+    border-color:forestgreen;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    border-top-right-radius: 10%;
+    border-top-left-radius: 10%;
+}

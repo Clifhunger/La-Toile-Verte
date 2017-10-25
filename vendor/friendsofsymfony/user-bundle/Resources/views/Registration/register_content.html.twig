@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container">
+<div class="container register">
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
     <div class="row">
@@ -13,22 +13,28 @@
         </div>
         <div class="col-lg-6">
             <div class="form-group">
+                {{ form_errors(form.email) }}
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                <small id="emailHelp" class="form-text text-muted">Votre adresse email ne sera pas partagée.</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
                 {{ form_errors(form.fisrtName) }}
                 {{ form_label(form.fisrtName) }}
                 {{ form_widget(form.fisrtName, {'attr': {'class': 'form-control'}}) }}
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        {{ form_errors(form.lastName) }}
-        {{ form_label(form.lastName) }}
-        {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_errors(form.email) }}
-        {{ form_label(form.email) }}
-        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
-        <small id="emailHelp" class="form-text text-muted">Votre adresse email ne sera pas partagée.</small>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ form_errors(form.lastName) }}
+                {{ form_label(form.lastName) }}
+                {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-6">
@@ -37,19 +43,25 @@
                 {{ form_widget(form.plainPassword) }}
             </div>
         </div>
+        <div class="col-lg-6">
+                <div class="form-group">
+                    {{ form_label(form.role) }}
+                    {{ form_widget(form.role, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.role) }}
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form.school) }}
+                    {{ form_label(form.school) }}
+                    {{ form_widget(form.school, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
     </div>
-    <div class="form-group">
-        {{ form_label(form.role) }}
-        {{ form_widget(form.role, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.role) }}
-    </div>
-    <div class="form-group">
-        {{ form_errors(form.school) }}
-        {{ form_label(form.school) }}
-        {{ form_widget(form.school, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary"/>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-lg-5">
+        </div>
+        <div class="col-lg-2">
+            <input style="margin-left: 15px;" type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary"/>
+        </div>
     </div>
 {{ form_end(form) }}
 </div>
