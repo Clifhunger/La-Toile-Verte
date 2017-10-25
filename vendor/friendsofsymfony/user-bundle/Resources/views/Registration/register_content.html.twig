@@ -2,15 +2,22 @@
 
 <div class="container">
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    <div class="form-group">
-        {{ form_errors(form.username) }}
-        {{ form_label(form.username) }}
-        {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_errors(form.fisrtName) }}
-        {{ form_label(form.fisrtName) }}
-        {{ form_widget(form.fisrtName, {'attr': {'class': 'form-control'}}) }}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ form_errors(form.username) }}
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ form_errors(form.fisrtName) }}
+                {{ form_label(form.fisrtName) }}
+                {{ form_widget(form.fisrtName, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
     </div>
     <div class="form-group">
         {{ form_errors(form.lastName) }}
@@ -23,9 +30,13 @@
         {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
         <small id="emailHelp" class="form-text text-muted">Votre adresse email ne sera pas partagée.</small>
     </div>
-    <div class="form-group">
-        {{ form_errors(form.plainPassword) }}
-        {{ form_widget(form.plainPassword) }}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ form_errors(form.plainPassword) }}
+                {{ form_widget(form.plainPassword) }}
+            </div>
+        </div>
     </div>
     <div class="form-group">
         {{ form_label(form.role) }}

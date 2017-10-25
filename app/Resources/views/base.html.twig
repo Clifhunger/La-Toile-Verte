@@ -34,9 +34,10 @@
 
                 <br/>
             </div>
+            {% block user_info %}
+            {% endblock %}
         </nav>
-        {% block user_info %}
-        {% endblock %}
+
     </header>
         {% block fos_user_content %}
         {% endblock %}
