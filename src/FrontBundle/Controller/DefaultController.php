@@ -31,5 +31,4 @@ class DefaultController extends Controller
     {
         return $this->render('FrontBundle:Default:blog.html.twig');
     }
-
 }
