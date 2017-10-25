@@ -23,8 +23,13 @@
 {% endblock %}
 {% block fos_user_content %}
 <div>
-    {% block body %}
-    {% endblock %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% block connected_content %}
+        {% endblock %}
+    {% else %}
+        {% block body %}
+        {% endblock %}
+    {% endif %}
 </div>
 {% endblock %}
 
