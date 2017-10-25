@@ -26,7 +26,11 @@ header{
     margin-left: 15px;
     margin-right: 2rem !important;
 }
+.logo{
+    height: 80px;
+    width: auto;
 
+}
 body{
     background-image: url("test4.png");
     background-color: white;
