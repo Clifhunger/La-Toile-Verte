@@ -1,0 +1,44 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    <div class="form-group">
+        {{ form_errors(form.username) }}
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.fisrtName) }}
+        {{ form_label(form.fisrtName) }}
+        {{ form_widget(form.fisrtName, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.lastName) }}
+        {{ form_label(form.lastName) }}
+        {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.email) }}
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        <small id="emailHelp" class="form-text text-muted">Votre adresse email ne sera pas partagée.</small>
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.plainPassword) }}
+        {{ form_widget(form.plainPassword) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.role) }}
+        {{ form_widget(form.role, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.role) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.school) }}
+        {{ form_label(form.school) }}
+        {{ form_widget(form.school, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary"/>
+    </div>
+{{ form_end(form) }}
+</div>
