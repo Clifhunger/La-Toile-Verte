@@ -31,6 +31,7 @@ body{
     background-image: url("test4.png");
     background-color: white;
     background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 collapse{
 }

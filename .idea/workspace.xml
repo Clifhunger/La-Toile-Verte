@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cf54147-22d9-486d-b582-2e43532a1b0a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/blog.html.twig" afterPath="$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/blog.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/timeline/css/style.css" afterPath="$PROJECT_DIR$/web/css/timeline/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css_TemplateBase/main.css" afterPath="$PROJECT_DIR$/web/css_TemplateBase/main.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +30,7 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FrontBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
+            <state relative-caret-position="392">
               <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
               <folding>
                 <element signature="e#42#99#0#PHP" expanded="true" />
@@ -40,90 +42,106 @@
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
+            <state relative-caret-position="458">
               <caret line="57" column="17" lean-forward="false" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/css/timeline/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="366" column="14" lean-forward="false" selection-start-line="366" selection-start-column="14" selection-end-line="366" selection-end-column="14" />
+            <state relative-caret-position="4">
+              <caret line="358" column="0" lean-forward="true" selection-start-line="358" selection-start-column="0" selection-end-line="358" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="blog.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/blog.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="68" lean-forward="false" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+            <state relative-caret-position="502">
+              <caret line="99" column="13" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
               <folding>
-                <element signature="e#945#971#0#HTML" expanded="true" />
-                <element signature="e#1343#1369#0#HTML" expanded="true" />
+                <element signature="e#3377#3423#0#HTML" expanded="true" />
+                <element signature="e#3546#3576#0#HTML" expanded="true" />
+                <element signature="e#4015#4042#0#HTML" expanded="true" />
+                <element signature="e#4165#4195#0#HTML" expanded="true" />
+                <element signature="e#4678#4704#0#HTML" expanded="true" />
+                <element signature="e#5618#5664#0#HTML" expanded="true" />
+                <element signature="e#5787#5817#0#HTML" expanded="true" />
+                <element signature="e#6256#6283#0#HTML" expanded="true" />
+                <element signature="e#6406#6436#0#HTML" expanded="true" />
+                <element signature="e#6919#6945#0#HTML" expanded="true" />
+                <element signature="e#7859#7905#0#HTML" expanded="true" />
+                <element signature="e#8028#8058#0#HTML" expanded="true" />
+                <element signature="e#8497#8524#0#HTML" expanded="true" />
+                <element signature="e#8647#8677#0#HTML" expanded="true" />
+                <element signature="e#9160#9186#0#HTML" expanded="true" />
+                <element signature="e#10100#10146#0#HTML" expanded="true" />
+                <element signature="e#10269#10299#0#HTML" expanded="true" />
+                <element signature="e#10738#10765#0#HTML" expanded="true" />
+                <element signature="e#10888#10918#0#HTML" expanded="true" />
+                <element signature="e#11401#11427#0#HTML" expanded="true" />
+                <element signature="e#12341#12387#0#HTML" expanded="true" />
+                <element signature="e#12510#12540#0#HTML" expanded="true" />
+                <element signature="e#12979#13006#0#HTML" expanded="true" />
+                <element signature="e#13129#13159#0#HTML" expanded="true" />
+                <element signature="e#13642#13668#0#HTML" expanded="true" />
+                <element signature="e#14582#14628#0#HTML" expanded="true" />
+                <element signature="e#14751#14781#0#HTML" expanded="true" />
+                <element signature="e#15220#15247#0#HTML" expanded="true" />
+                <element signature="e#15370#15400#0#HTML" expanded="true" />
+                <element signature="e#15883#15909#0#HTML" expanded="true" />
+                <element signature="e#16823#16869#0#HTML" expanded="true" />
+                <element signature="e#16992#17022#0#HTML" expanded="true" />
+                <element signature="e#17461#17488#0#HTML" expanded="true" />
+                <element signature="e#17611#17641#0#HTML" expanded="true" />
+                <element signature="e#18124#18150#0#HTML" expanded="true" />
+                <element signature="e#19064#19110#0#HTML" expanded="true" />
+                <element signature="e#19233#19263#0#HTML" expanded="true" />
+                <element signature="e#19702#19729#0#HTML" expanded="true" />
+                <element signature="e#19852#19882#0#HTML" expanded="true" />
+                <element signature="e#20365#20391#0#HTML" expanded="true" />
+                <element signature="e#21305#21351#0#HTML" expanded="true" />
+                <element signature="e#21474#21504#0#HTML" expanded="true" />
+                <element signature="e#21943#21970#0#HTML" expanded="true" />
+                <element signature="e#22093#22123#0#HTML" expanded="true" />
+                <element signature="e#22606#22632#0#HTML" expanded="true" />
+                <element signature="e#23546#23592#0#HTML" expanded="true" />
+                <element signature="e#23715#23745#0#HTML" expanded="true" />
+                <element signature="e#24184#24211#0#HTML" expanded="true" />
+                <element signature="e#24334#24364#0#HTML" expanded="true" />
+                <element signature="e#24847#24873#0#HTML" expanded="true" />
+                <element signature="e#25787#25833#0#HTML" expanded="true" />
+                <element signature="e#25956#25986#0#HTML" expanded="true" />
+                <element signature="e#26425#26452#0#HTML" expanded="true" />
+                <element signature="e#26575#26605#0#HTML" expanded="true" />
+                <element signature="e#27088#27114#0#HTML" expanded="true" />
+                <element signature="e#28028#28074#0#HTML" expanded="true" />
+                <element signature="e#28197#28227#0#HTML" expanded="true" />
+                <element signature="e#28666#28693#0#HTML" expanded="true" />
+                <element signature="e#28816#28846#0#HTML" expanded="true" />
+                <element signature="e#29329#29355#0#HTML" expanded="true" />
+                <element signature="e#30269#30315#0#HTML" expanded="true" />
+                <element signature="e#30438#30468#0#HTML" expanded="true" />
+                <element signature="e#30907#30934#0#HTML" expanded="true" />
+                <element signature="e#31057#31087#0#HTML" expanded="true" />
+                <element signature="e#31570#31596#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css/timeline/js/main.js">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/css_TemplateBase/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="33" column="32" lean-forward="false" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/home.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="16" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connexion.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/connexion.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#h2#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FrontBundle.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FrontBundle/FrontBundle.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test2.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css_TemplateBase/test2.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test3.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css_TemplateBase/test3.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -141,11 +159,12 @@
     <findStrings>
       <find>cd-date</find>
       <find>.cd-timeline-img</find>
-      <find>#cd-timeline::before</find>
       <find>cd-timeline-content</find>
-      <find>.cd-timeline-content</find>
-      <find>.cd-timeline-content .cd-date</find>
       <find>.cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date</find>
+      <find>p</find>
+      <find>.cd-timeline-content</find>
+      <find>#cd-timeline::before</find>
+      <find>.cd-timeline-content .cd-date</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,7 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/css_TemplateBase/main.css" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Resources/views/connexion.html" />
         <option value="$PROJECT_DIR$/web/css/home.css" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Resources/views/conniexion.html" />
@@ -165,8 +183,10 @@
         <option value="$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/blog.html" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/web/css/timeline/css/style.css" />
+        <option value="$PROJECT_DIR$/web/css/timeline/css/icon_vue.svg" />
+        <option value="$PROJECT_DIR$/web/css_TemplateBase/main.css" />
         <option value="$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/blog.html.twig" />
+        <option value="$PROJECT_DIR$/web/css/timeline/css/style.css" />
       </list>
     </option>
   </component>
@@ -261,7 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -317,80 +336,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="timeline" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="timeline" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="timeline" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -532,24 +477,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="La-Toile-Verte" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -561,6 +488,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -573,11 +501,12 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\La-Toile-Verte\web\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\La-Toile-Verte\src\FrontBundle\Resources\views\Default" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\La-Toile-Verte\web\css\timeline\css" />
+      <recent name="C:\laragon\www\La-Toile-Verte\web\css" />
     </key>
   </component>
   <component name="RunManager">
@@ -656,19 +585,21 @@
       <workItem from="1508659046308" duration="683000" />
       <workItem from="1508685743501" duration="2397000" />
       <workItem from="1508751988167" duration="7275000" />
+      <workItem from="1508850815156" duration="2370000" />
+      <workItem from="1508904573925" duration="3299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26764000" />
+    <option name="totallyTimeSpent" value="32433000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23958333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -715,25 +646,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/connexion.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/connexion.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css_TemplateBase/test.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -768,7 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -809,7 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -817,7 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -850,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,7 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -958,21 +861,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css_TemplateBase/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/connexion.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,7 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="25" column="2" lean-forward="false" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1009,7 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1144">
           <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1017,7 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,7 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="16" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1057,40 +946,11 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="57" column="17" lean-forward="false" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrontBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-          <folding>
-            <element signature="e#42#99#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/timeline/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="366" column="14" lean-forward="false" selection-start-line="366" selection-start-column="14" selection-end-line="366" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/connexion.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1102,14 +962,127 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/timeline/css/icon_vue.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/timeline/css/icon_pouce.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
+          <folding>
+            <element signature="e#42#99#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="57" column="17" lean-forward="false" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css_TemplateBase/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="33" column="32" lean-forward="false" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FrontBundle/Resources/views/Default/blog.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="68" lean-forward="false" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+        <state relative-caret-position="502">
+          <caret line="99" column="13" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
           <folding>
-            <element signature="e#945#971#0#HTML" expanded="true" />
-            <element signature="e#1343#1369#0#HTML" expanded="true" />
+            <element signature="e#3377#3423#0#HTML" expanded="true" />
+            <element signature="e#3546#3576#0#HTML" expanded="true" />
+            <element signature="e#4015#4042#0#HTML" expanded="true" />
+            <element signature="e#4165#4195#0#HTML" expanded="true" />
+            <element signature="e#4678#4704#0#HTML" expanded="true" />
+            <element signature="e#5618#5664#0#HTML" expanded="true" />
+            <element signature="e#5787#5817#0#HTML" expanded="true" />
+            <element signature="e#6256#6283#0#HTML" expanded="true" />
+            <element signature="e#6406#6436#0#HTML" expanded="true" />
+            <element signature="e#6919#6945#0#HTML" expanded="true" />
+            <element signature="e#7859#7905#0#HTML" expanded="true" />
+            <element signature="e#8028#8058#0#HTML" expanded="true" />
+            <element signature="e#8497#8524#0#HTML" expanded="true" />
+            <element signature="e#8647#8677#0#HTML" expanded="true" />
+            <element signature="e#9160#9186#0#HTML" expanded="true" />
+            <element signature="e#10100#10146#0#HTML" expanded="true" />
+            <element signature="e#10269#10299#0#HTML" expanded="true" />
+            <element signature="e#10738#10765#0#HTML" expanded="true" />
+            <element signature="e#10888#10918#0#HTML" expanded="true" />
+            <element signature="e#11401#11427#0#HTML" expanded="true" />
+            <element signature="e#12341#12387#0#HTML" expanded="true" />
+            <element signature="e#12510#12540#0#HTML" expanded="true" />
+            <element signature="e#12979#13006#0#HTML" expanded="true" />
+            <element signature="e#13129#13159#0#HTML" expanded="true" />
+            <element signature="e#13642#13668#0#HTML" expanded="true" />
+            <element signature="e#14582#14628#0#HTML" expanded="true" />
+            <element signature="e#14751#14781#0#HTML" expanded="true" />
+            <element signature="e#15220#15247#0#HTML" expanded="true" />
+            <element signature="e#15370#15400#0#HTML" expanded="true" />
+            <element signature="e#15883#15909#0#HTML" expanded="true" />
+            <element signature="e#16823#16869#0#HTML" expanded="true" />
+            <element signature="e#16992#17022#0#HTML" expanded="true" />
+            <element signature="e#17461#17488#0#HTML" expanded="true" />
+            <element signature="e#17611#17641#0#HTML" expanded="true" />
+            <element signature="e#18124#18150#0#HTML" expanded="true" />
+            <element signature="e#19064#19110#0#HTML" expanded="true" />
+            <element signature="e#19233#19263#0#HTML" expanded="true" />
+            <element signature="e#19702#19729#0#HTML" expanded="true" />
+            <element signature="e#19852#19882#0#HTML" expanded="true" />
+            <element signature="e#20365#20391#0#HTML" expanded="true" />
+            <element signature="e#21305#21351#0#HTML" expanded="true" />
+            <element signature="e#21474#21504#0#HTML" expanded="true" />
+            <element signature="e#21943#21970#0#HTML" expanded="true" />
+            <element signature="e#22093#22123#0#HTML" expanded="true" />
+            <element signature="e#22606#22632#0#HTML" expanded="true" />
+            <element signature="e#23546#23592#0#HTML" expanded="true" />
+            <element signature="e#23715#23745#0#HTML" expanded="true" />
+            <element signature="e#24184#24211#0#HTML" expanded="true" />
+            <element signature="e#24334#24364#0#HTML" expanded="true" />
+            <element signature="e#24847#24873#0#HTML" expanded="true" />
+            <element signature="e#25787#25833#0#HTML" expanded="true" />
+            <element signature="e#25956#25986#0#HTML" expanded="true" />
+            <element signature="e#26425#26452#0#HTML" expanded="true" />
+            <element signature="e#26575#26605#0#HTML" expanded="true" />
+            <element signature="e#27088#27114#0#HTML" expanded="true" />
+            <element signature="e#28028#28074#0#HTML" expanded="true" />
+            <element signature="e#28197#28227#0#HTML" expanded="true" />
+            <element signature="e#28666#28693#0#HTML" expanded="true" />
+            <element signature="e#28816#28846#0#HTML" expanded="true" />
+            <element signature="e#29329#29355#0#HTML" expanded="true" />
+            <element signature="e#30269#30315#0#HTML" expanded="true" />
+            <element signature="e#30438#30468#0#HTML" expanded="true" />
+            <element signature="e#30907#30934#0#HTML" expanded="true" />
+            <element signature="e#31057#31087#0#HTML" expanded="true" />
+            <element signature="e#31570#31596#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/timeline/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="358" column="0" lean-forward="true" selection-start-line="358" selection-start-column="0" selection-end-line="358" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

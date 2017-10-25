@@ -97,7 +97,7 @@ Main components
   position: absolute;
   top: 70px;
   left: 18px;
-  height: 83%;
+  height: 100%;
   width: 6px;
   background: forestgreen;
 }
@@ -249,17 +249,20 @@ Main components
 .cd-timeline-content {
   position: relative;
   margin-left: 60px;
-  border-radius: 0.25em;
   border-bottom: solid 3px ;
+  border-right: solid 3px;
   border-color: forestgreen;
   padding: 0.5em;
+  padding-left: 25px;
+  padding-bottom: 0px;
   transition: background 0.5s;
-  background-color: rgba(34,139,34,0.5);
+  background-color: rgba(255,255,255,0.6);
+
   text-decoration: none;
 }
 .cd-timeline-content:hover
 {
-  background-color: forestgreen;
+  background-color: rgba(34,139,34,0.5);
   transition: background 0.2s;
   text-decoration: none;
 }
@@ -330,6 +333,7 @@ Main components
   .cd-timeline-content {
     margin-left: 0;
     padding: 1.6em;
+    padding-bottom: 0px;
     width: 39%;
   }
   .cd-timeline-content::before {
@@ -343,14 +347,17 @@ Main components
   }
   .cd-timeline-content .cd-date {
     position: absolute;
-    left: 150%;
-    top: 2px;
+    left: 140%;
+    top: 45%;
     font-size: 24px;
     font-size: 1.5rem;
     color:forestgreen;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content {
     float: right;
+    border-right: none;
+
+    border-left: solid 3px forestgreen;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
     top: 24px;
@@ -364,7 +371,7 @@ Main components
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
-    right: 150%;
+    right: 140%;
     text-align: right;
     width: 100px;
   }
