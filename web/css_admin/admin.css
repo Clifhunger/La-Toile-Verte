@@ -1,0 +1,168 @@
+body{
+    background-image: url(http://www.staderochelais.com/sites/stade-rochelais/themes/theme_base/images/body-bg.jpg);
+}
+html,body
+{
+    font-family:Roboto;
+    font-size:16px;
+    line-height:1.4;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+a
+{
+    text-decoration-line:none;
+    color:inherit}
+a :hover
+{
+    text-decoration-line
+    :none;
+}
+
+.table>tbody>tr>td,
+
+.table>tfoot>tr>td,
+.table>thead>tr>td{
+    vertical-align: middle!important;
+    padding: 8px !important;
+    line-height: 8 !important;
+    border-top: 5px solid #FFF !important;
+}
+
+.site-content
+{
+    padding-top:66px}
+
+.header
+{
+    position:fixed;
+    left:0;
+    right:0;
+    height:85px;
+    line-height:66px;
+    color:#FFF;
+    background-color: #333333
+}
+
+.header__logo
+{
+    font-weight:bold;
+    padding:5px 25px;
+    float:left}
+
+.menu
+{
+    float:left}
+
+.menu a
+{
+    padding:0 10px}
+
+.menu a:hover
+{
+    background-color:#191919;}
+
+
+.site-pusher,.site-container
+{
+    height:100%}
+.with--sidebar .site-container
+{
+    overflow-y:hidden;
+    overflow-x: hidden;
+    text-decoration-line:none;
+}
+.site-container
+{
+    overflow-y:auto;
+    overflow-x: hidden;
+
+}
+
+.site-pusher
+{
+    -moz-transition-duration:0.3s;
+    -o-transition-duration:0.3s;
+    -webkit-transition-duration:0.3s;
+    transition-duration:0.3s;
+    -moz-transform:translateX(0px);
+    -ms-transform:translateX(0px);
+    -webkit-transform:translateX(0px);
+    transform:translateX(0px);
+    height: 100%}
+
+.site-content
+{
+    position:absolute;
+    top:66px;
+    right:0;
+    left:0;
+    bottom:0;
+    padding-top:0;
+}
+
+.header
+{
+    position:static}
+
+.header__icon
+{
+    position:relative;
+    display:block;
+    float:right;
+    width:60px;
+    height:85px;
+    cursor:pointer}
+
+.header__icon:after
+{
+    content:'';
+    position:absolute;
+    display:block;
+    width:2rem;
+    top:22px;
+    left:15px;
+    -moz-box-shadow:0 10px 0 1.5px #fab81e,0 20px 0 1.5px #fab81e,0 30px 0 1.5px #fab81e;
+    -webkit-box-shadow:0 10px 0 1.5px #fab81e,0 20px 0 1.5px #fab81e,0 30px 0 1.5px #fab81e;
+    box-shadow:0 10px 0 1.5px #fab81e,0 20px 0 1.5px #fab81e,0 30px 0 1.5px #fab81e
+}
+
+.menu
+{
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling:touch;
+    background-color:#333;
+    width:300px;
+    -moz-transform:translateX(300px);
+    -ms-transform:translateX(300px);
+    -webkit-transform:translateX(300px);
+    transform:translateX(300px)}
+
+.menu a
+{
+    display:block;
+    height:40px;
+    text-align:center;
+    line-height:40px;}
+
+.with--sidebar .site-pusher
+{
+    -moz-transform:translateX(-250px);
+    -ms-transform:translateX(-250px);
+    -webkit-transform:translateX(-250px);
+    transform:translateX(-250px)}
+
+.with--sidebar .site-cache
+{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0,0,0,0.6)}
