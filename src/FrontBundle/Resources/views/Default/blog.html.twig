@@ -1,6 +1,7 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 
 {% block body %}
+{% block connected_content %}
 
    <section id="cd-timeline" class="cd-container">
               <div  class="cd-timeline-block">
@@ -583,6 +584,7 @@
 
 
    </section> <!-- cd-timeline -->
+{% endblock %}
 {% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/timeline/css/reset.css') }}"> <!-- CSS reset -->
