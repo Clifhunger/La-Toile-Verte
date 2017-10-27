@@ -16,11 +16,11 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/connexion", name="connexion")
+     *  @Route("/quiz", name="quiz")
      */
-    public function connexionAction()
+    public function quizAction()
     {
-        return $this->render('FrontBundle:Default:connexion.html.twig');
+        return $this->render('FrontBundle:Default:quiz.html.twig');
     }
 
 
