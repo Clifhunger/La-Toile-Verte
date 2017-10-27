@@ -20,7 +20,7 @@ class DefaultController extends Controller
      */
     public function quizAction()
     {
-        return $this->render('FrontBundle:Default:quiz.html.twig');
+        return $this->render('FrontBundle:Default:quiz.html.twig', array('test'=>'123'));
     }
 
 
