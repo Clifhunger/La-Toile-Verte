@@ -22,6 +22,29 @@
     </div>
 {% endblock %}
 
+{% block connected_content %}
+    <div class="container connexion">
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <a href="{{ path('blog') }}" class="col-lg-5 rr rr-left" style="text-decoration: none;">
+                <div>
+                    <h2>Blog</h2>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                </div>
+            </a>
+
+            <a href="#" class="col-lg-4 rr rr-right" style="text-decoration: none;">
+                <div>
+                    <h2>Quizz</h2>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/home.css')}}" />
 {% endblock %}
