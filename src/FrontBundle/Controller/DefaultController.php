@@ -29,6 +29,8 @@ class DefaultController extends Controller
      */
     public function BlogAction()
     {
-        return $this->render('FrontBundle:Default:blog.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository('DataBaseBundle:Article')->findVisible();
+        return $this->render('FrontBundle:Default:blog.html.twig', array('articles' => $articles));
     }
 }
