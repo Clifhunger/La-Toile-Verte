@@ -12,25 +12,40 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('logo.png') }}" />
 </head>
 <body>
-<div class="site-container">
-    <div class="site-pusher">
         <header class="header">
             <a class="header__icon" id="header__icon"></a>
-            <a href="#" class="header__logo"><img src="{{ asset('logo.png') }}" style="width:50px;height:75px;"></a>
+            <h1 class="titre">Administration -- La Toile Verte</h1>
             <nav class="menu" style="">
-                <a href="#"><h2>Accueil</h2></a>
-                <a href="#"><h2>Calendrier Top 14</h2></a>
+                <a class="svgIcon" href="#">
+                <svg fill="#FFFFFF" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+                </a>
+                <a class="svgIcon" href="#">
+                    <svg fill="#FFFFFF" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+                    </svg>
+                </a>
+                <a class="svgIcon" href="#">
+                    <svg  height="48" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:none;stroke:#FFFFFF;stroke-width:7;stroke-miterlimit:10;}
+                            .st1{fill:none;stroke:#FFFFFF;stroke-width:7;stroke-miterlimit:10;}
+                        </style>
+                        <circle id="XMLID1" class="st0" cx="25" cy="25" r="20"/>
+                        <line id="XMLID2" class="st1" x1="30.8" y1="34.2" x2="45" y2="45"/>
+                    </svg>
+                </a>
+                <a class="lienText" href="#"><h2>Accueil</h2></a>
+                <a class="lienText" href="#"><h2>Articles</h2></a>
+                <a class="lienText" href="#"><h2>Quiz</h2></a>
             </nav>
         </header>
-        <div class="container" style="width: 100%;padding: 0px;">
-            {% block container %}{% endblock %}
-            <div class="container">
 
-                <div class="site-cache" id="site-cache"></div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <footer></footer>
 
 
