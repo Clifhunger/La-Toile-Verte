@@ -521,7 +521,21 @@ Main components
     text-decoration-line: none;
   }
 }
-.col-lg-4
-{
+.col-lg-4 {
   margin-bottom: 15px;
+
+}
+
+.SansArticle{
+  text-align: center;
+  padding: 15px;
+  position: absolute;
+  top: 40%;
+  left: 22.5%;
+  right: auto;
+  width: 55%;
+  background-color: white;
+  opacity: 0.7;
+  border: solid 2px;
+  border-color: forestgreen;
 }
