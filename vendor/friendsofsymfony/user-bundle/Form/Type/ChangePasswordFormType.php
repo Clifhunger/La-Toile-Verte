@@ -55,8 +55,8 @@ class ChangePasswordFormType extends AbstractType
         $builder->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
             'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
             'options' => array('translation_domain' => 'FOSUserBundle'),
-            'first_options' => array('label' => 'form.new_password'),
-            'second_options' => array('label' => 'form.new_password_confirmation'),
+            'first_options' => array('label' => 'form.new_password', 'attr' => array('class' =>'form-control')),
+            'second_options' => array('label' => 'form.new_password_confirmation', 'attr' => array('class' =>'form-control')),
             'invalid_message' => 'fos_user.password.mismatch',
         ));
     }

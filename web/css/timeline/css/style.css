@@ -350,7 +350,7 @@ Main components
   .cd-timeline-content .cd-date {
     position: absolute;
     left: 140%;
-    top: 45%;
+    top: 33%;
     font-size: 24px;
     font-size: 1.5rem;
     color:forestgreen;
@@ -373,7 +373,7 @@ Main components
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
-    right: 140%;
+    right: 145%;
     text-align: right;
     width: 100px;
   }
