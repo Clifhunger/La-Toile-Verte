@@ -40,3 +40,21 @@ body{
 .attUser{
     margin-bottom: 15px;
 }
+
+html{
+    overflow: hidden;
+}
+
+.container-fluid{
+    position: absolute!important;
+    height: 100%!important;
+}
+
+.profilContent {
+    height: 100%!important;
+}
+
+
+.form-group{
+    width: 50%;
+}

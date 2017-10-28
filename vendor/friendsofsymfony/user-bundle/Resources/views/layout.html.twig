@@ -3,14 +3,14 @@
 <div style="position: absolute;top: 15px;right: 15px;">
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-        <a style="color:#ffcc00;font-weight: bold;" href="{{ path('fos_user_profile_edit') }}">
+        <a style="color:white;font-weight: bold;" href="{{ path('fos_user_profile_edit') }}">
             {{ 'layout.profile'|trans({}, 'FOSUserBundle') }}
         </a> -
-        <a style="color:#ffcc00;font-weight: bold;" href="{{ path('fos_user_security_logout') }}">
+        <a style="color:white;font-weight: bold;" href="{{ path('fos_user_security_logout') }}">
             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
         </a>
     {% else %}
-        <a  style="color: #ffcc00;font-weight: bold; " href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        <a  style="color: white;font-weight: bold; " href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
     {% endif %}
 </div>
 
