@@ -1,60 +1,76 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 
 {% block connected_content %}
-<div id="surveyElement">
-</div>
-<script>
-var json = { title: 'Product Feedback Survey Example {{ test }}', showProgressBar: "top", pages: [
-    {questions: [
-        { type: "matrix", name: "Quality", title: "Please indicate if you agree or disagree with the following statements",
-            columns: [{ value: 1, text: "Strongly Disagree" },
-                { value: 2, text: "Disagree" },
-                { value: 3, text: "Neutral" },
-                { value: 4, text: "Agree" },
-                { value: 5, text: "Strongly Agree" }],
-            rows: [{ value: "affordable", text: "Product is affordable" },
-                { value: "does what it claims", text: "Product does what it claims" },
-                { value: "better then others", text: "Product is better than other products on the market" },
-                { value: "easy to use", text: "Product is easy to use" }]},
-        { type: "rating", name: "satisfaction", title: "How satisfied are you with the Product?",
-            mininumRateDescription: "Not Satisfied", maximumRateDescription: "Completely satisfied" },
-        { type: "rating", name: "recommend friends", visibleIf: "{satisfaction} > 3",
-            title: "How likely are you to recommend the Product to a friend or co-worker?",
-            mininumRateDescription: "Will not recommend", maximumRateDescription: "I will recommend" },
-        { type: "comment", name: "suggestions", title:"What would make you more satisfied with the Product?", }
-    ]},
-    {questions: [
-        { type: "radiogroup", name: "price to competitors",
-            title: "Compared to our competitors, do you feel the Product is",
-            choices: ["Less expensive", "Priced about the same", "More expensive", "Not sure"]},
-        { type: "radiogroup", name: "price", title: "Do you feel our current price is merited by our product?",
-            choices: ["correct|Yes, the price is about right",
-                "low|No, the price is too low for your product",
-                "high|No, the price is too high for your product"]},
-        { type: "multipletext", name: "pricelimit", title: "What is the... ",
-            items: [{ name: "mostamount", title: "Most amount you would every pay for a product like ours" },
-                { name: "leastamount", title: "The least amount you would feel comfortable paying" }]}
-    ]},
-    { questions: [
-        { type: "text", name: "email",
-            title: "Thank you for taking our survey. Your survey is almost complete, please enter your email address in the box below if you wish to participate in our drawing, then press the 'Submit' button."}
-    ]}
-]};
+    <div class="container">
 
-Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
-Survey.Survey.cssType = "bootstrap";
-
-var model = new Survey.Model(json);
-
-$("#surveyElement").Survey({model:model});
-</script>
+        <div id="jsQuizEngine">
+            <section id="title" data-bind="visible: !quizStarted()">
+                <div class="jumbotron">
+                    <h1 data-bind="text: quizTitle"></h1>
+                    <p data-bind="text: quizSubTitle"></p>
+                    <p><button class="btn btn-primary btn-lg" data-bind="click: startQuiz">Commencer le quiz</button></p>
+                </div>
+            </section>
+            <section class="quiz" data-bind="visible: quizStarted() && !quizComplete()">
+                <div>Question <span data-bind="text: currentQuestionIndex"></span> sur <span data-bind="text: questionCount"></span></div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
+                </div>
+                <div class="question-pool"></div>
+                <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
+                <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
+                <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
+                <button class="btn btn-primary" data-bind="click: calculateScore, visible: currentQuestionIsLast">Voir le résultat</button>
+            </section>
+            <section class="score" data-bind="visible: quizComplete">
+                <p>Résultat :</p>
+                <h2 data-bind="text: quizTitle"></h2>
+                <h3 data-bind="text: quizSubTitle"></h3>
+                <div>Questions: <span data-bind="text: questionCount"></span></div>
+                <div>Date: <span data-bind="text: calculatedScoreDate"></span></div>
+                <div>Score Total: <span data-bind="text: calculatedScore"></span>%</div>
+                <div>Bonnes Réponses: <span data-bind="text: totalQuestionsCorrect"></span></div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': calculatedScore }, style: { width: calculatedScore() + '%' }, css: { 'progress-bar-success': quizPassed, 'progress-bar-danger': !quizPassed() }"></div>
+                </div>
+                <div class="pass-indicator">
+                    <h1 data-bind="css: { 'text-success': quizPassed, 'text-danger': !quizPassed() }">
+                        <span data-bind="visible: quizPassed">OBTENUE</span>
+                        <span data-bind="visible: !quizPassed()">REFUSÉE</span>
+                    </h1>
+                </div>
+                <div class="solutions">
+                    <div data-bind="foreach: { data: questions, as: 'question' }">
+                        <h3>
+                            Question <span data-bind="text: question.index"></span> (
+                            <span data-bind="css: {'text-success': question.correct }, visible: question.correct">Correcte</span>
+                            <span data-bind="css: {'text-danger': !question.correct }, visible: !question.correct">Fausse</span>
+                            )
+                        </h3>
+                    <div data-bind="attr: {'id': 'solution-' + question.index}"></div>
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            Powered by <a href="https://github.com/crpietschmann/jsQuizEngine">jsQuizEngine</a> by <a href="http://pietschsoft.com">Chris Pietschmann</a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block js %}
-    <script src="https://unpkg.com/jquery"></script>
-    <script src="https://unpkg.com/survey-jquery"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jsQuizEngine.js') }}"></script>
+    <script>
+        var quizEngine = null;
+        $(function () {
+            quizEngine = jsQuizEngine($('#jsQuizEngine'), { quizUrl: '{{ asset("quiz/default.htm") }}' });
+        });
+    </script>
 {% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/timeline/css/reset.css') }}"> <!-- CSS reset -->
     <link rel="stylesheet" href="{{ asset('css/timeline/css/style.css')}}"> <!-- Resource style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/quiz/jsQuizEngine.css')}}">
 {% endblock %}
