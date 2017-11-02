@@ -58,14 +58,14 @@
 {% endblock %}
 
 {% block js %}
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js"></script>
     <script src="{{ asset('js/jsQuizEngine.js') }}"></script>
     <script>
         var quizEngine = null;
         $(function () {
-            quizEngine = jsQuizEngine($('#jsQuizEngine'), { quizUrl: '{{ asset("quiz/default.htm.twig") }}' });
+            quizEngine = jsQuizEngine($('#jsQuizEngine'), { quizUrl: '{{ asset(filename) }}' });
         });
     </script>
 {% endblock %}

@@ -25,9 +25,12 @@ class DefaultController extends Controller
         if ($quizes) {
             $page = $this->render('default.htm.twig', array('quiz' => $quizes, 'questions' => $questions));
         }
-        $myfile = fopen($this->get('kernel')->getRootDir() . '/../web/quiz/default.htm.twig', "w") or die("Unable to open file!");
+        $filename = 'quiz/' . rand(1000, 9999);
+        $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
+        $myfile = fopen($full_path, "w") or die("Unable to open file!");
         fwrite($myfile, $page->getContent());
-        return $this->render('FrontBundle:Default:quiz.html.twig');
+        fclose($myfile);
+        return $this->render('FrontBundle:Default:quiz.html.twig', array('filename' => $filename, 'full_path' => $full_path,));
     }
 
 
