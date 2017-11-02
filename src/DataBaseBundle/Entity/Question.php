@@ -35,6 +35,20 @@ class Question
     private $label;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="desc", type="string", length=255, nullable=true)
+     */
+    private $desc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hint", type="string", length=255, nullable=true)
+     */
+    private $hint;
+
+    /**
      *
      * @ORM\OneToMany(targetEntity="MyOption", mappedBy="question")
      */
@@ -137,5 +151,53 @@ class Question
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * Set desc
+     *
+     * @param string $desc
+     *
+     * @return Question
+     */
+    public function setDesc($desc)
+    {
+        $this->desc = $desc;
+    
+        return $this;
+    }
+
+    /**
+     * Get desc
+     *
+     * @return string
+     */
+    public function getDesc()
+    {
+        return $this->desc;
+    }
+
+    /**
+     * Set hint
+     *
+     * @param string $hint
+     *
+     * @return Question
+     */
+    public function setHint($hint)
+    {
+        $this->hint = $hint;
+    
+        return $this;
+    }
+
+    /**
+     * Get hint
+     *
+     * @return string
+     */
+    public function getHint()
+    {
+        return $this->hint;
     }
 }

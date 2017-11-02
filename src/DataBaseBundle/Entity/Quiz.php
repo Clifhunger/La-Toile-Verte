@@ -29,6 +29,13 @@ class Quiz
     private $label;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="desc", type="string")
+     */
+    private $desc;
+
+    /**
      *
      * @ORM\OneToMany(targetEntity="Question", mappedBy="quiz")
      */
@@ -106,5 +113,29 @@ class Quiz
     public function getLabel()
     {
         return $this->label;
+    }
+
+    /**
+     * Set desc
+     *
+     * @param string $desc
+     *
+     * @return Quiz
+     */
+    public function setDesc($desc)
+    {
+        $this->desc = $desc;
+    
+        return $this;
+    }
+
+    /**
+     * Get desc
+     *
+     * @return string
+     */
+    public function getDesc()
+    {
+        return $this->desc;
     }
 }
