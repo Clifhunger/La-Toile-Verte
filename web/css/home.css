@@ -71,11 +71,34 @@ h2 { margin-top: 20px !important;  color: white !important; }
 
 }
 
-.twitter{
-    position: fixed;
-    top:200px;
-    right:20px;
-    height:505px;
+.connecte {
+    margin-top: 40px;
+}
+
+[class*="col"] {
+    margin-bottom: 20px;
+}
+
+.droite{
     border-top: solid 2px forestgreen;
     border-bottom: solid 2px forestgreen;
+}
+
+.gauche {
+    border-top: solid 2px forestgreen;
+    border-bottom: solid 2px forestgreen;
+    background-color: rgba(255,255,255,0.7);
+}
+
+.article {
+    margin-bottom: 50px;
+}
+
+.article h3 {
+    margin-top: 10px !important;
+}
+
+.lien {
+    position: absolute;
+    right: 0;
 }
