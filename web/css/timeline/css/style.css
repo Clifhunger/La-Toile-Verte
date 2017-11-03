@@ -350,7 +350,7 @@ Main components
   .cd-timeline-content .cd-date {
     position: absolute;
     left: 140%;
-    top: 45%;
+    top: 33%;
     font-size: 24px;
     font-size: 1.5rem;
     color:forestgreen;
@@ -373,7 +373,7 @@ Main components
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
-    right: 140%;
+    right: 145%;
     text-align: right;
     width: 100px;
   }
@@ -521,7 +521,21 @@ Main components
     text-decoration-line: none;
   }
 }
-.col-lg-4
-{
+.col-lg-4 {
   margin-bottom: 15px;
+
+}
+
+.SansArticle{
+  text-align: center;
+  padding: 15px;
+  position: absolute;
+  top: 40%;
+  left: 22.5%;
+  right: auto;
+  width: 55%;
+  background-color: white;
+  opacity: 0.7;
+  border: solid 2px;
+  border-color: forestgreen;
 }

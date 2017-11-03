@@ -104,3 +104,18 @@ h2 { margin-top: 20px !important;  color: white !important; }
     position: absolute;
     right: 0;
 }
+
+.twitter{
+    position: fixed;
+    top:110px;
+    right:0;
+    height:100%;
+    width: 400px;
+    border-left: solid 2px forestgreen;
+    border-bottom: solid 2px forestgreen;
+}
+
+iframe{
+    height: 100%!important;
+    width: 100%!important;
+}

@@ -5,12 +5,14 @@
         e.preventDefault();
         $('nav').toggleClass('reduit');
         $('header').toggleClass('rotation');
+        $('div.content-wrapper').toggleClass('grand');
     });
 
     /* Je veux pouvoir masquer le menu si on clique sur le cache */
     $('#site-cache').click(function(e){
         $('nav').removeClass('reduit');
         $('header').removeClass('rotation');
+        $('div.content-wrapper').removeClass('grand');
     })
 
 })(jQuery);

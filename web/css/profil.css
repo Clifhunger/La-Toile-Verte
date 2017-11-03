@@ -1,0 +1,60 @@
+header{
+    margin-bottom: 0!important;
+}
+.dashboard{
+    padding-top: 60px;
+    background-color: #f5f5f5;
+    border-right: 3px solid #eee ;
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+
+}
+.lienText{
+    text-decoration: none!important;
+}
+.lienText h2{
+    color: forestgreen;
+    font-size: 1.5em;
+    padding-left: 25px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+
+}
+
+.lienText :hover{
+    color: white;
+    background-color: forestgreen;
+}
+.main{
+    padding-top: 60px;
+
+}
+body{
+    background-image: none!important;
+}
+#fos_user_change_password_form_plainPassword_first{
+    margin-bottom: 16px;
+}
+
+.attUser{
+    margin-bottom: 15px;
+}
+
+html{
+    overflow: hidden;
+}
+
+.container-fluid{
+    position: absolute!important;
+    height: 100%!important;
+}
+
+.profilContent {
+    height: 100%!important;
+}
+
+
+.form-group{
+    width: 50%;
+}
