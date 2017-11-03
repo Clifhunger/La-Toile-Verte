@@ -16,26 +16,27 @@ h2 { margin-top: 20px !important;  color: white !important; }
 
 }
 .rr-left {
-         z-index: 1;
-         float: left;
-         width: 55%;
+    z-index: 1;
+    float: left;
+    width: 55%;
     margin-right: 15px;
  }
+
 .rr-right {
-     z-index: 2;
-     float: right;
-     width: 44%;
+    z-index: 2;
+    float: right;
+    width: 44%;
     margin-left: 15px;
 }
 
-   .rr:after,
-   .rr:before {
-       content: "";
-       position: absolute;
-       top: 0;
-       width: 0;
-       height: 0;
-   }
+.rr:after, .rr:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+}
+
 .rr-left:after {
     right: -10px;
     border-left: 100px solid forestgreen;
@@ -47,10 +48,11 @@ h2 { margin-top: 20px !important;  color: white !important; }
     border-top: 200px solid rgba(0, 0, 0, 0);
 }
 
-   .rr-left > div {
-       margin-right: 100px;
-       margin-left: 50px;
-   }
+.rr-left > div {
+    margin-right: 100px;
+    margin-left: 50px;
+}
+
 .rr-right > div {
     margin-right: 50px;
     margin-left: 25px;
