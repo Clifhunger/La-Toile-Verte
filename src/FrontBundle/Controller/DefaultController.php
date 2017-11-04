@@ -20,7 +20,17 @@ class DefaultController extends Controller
      */
     public function quizAction()
     {
-        return $this->render('FrontBundle:Default:quiz.html.twig', array('test'=>'123'));
+        $quizes = $this->getDoctrine()->getRepository('DataBaseBundle:Quiz')->find(1);
+        $questions = $quizes->getQuestions();
+        if ($quizes) {
+            $page = $this->render('default.htm.twig', array('quiz' => $quizes, 'questions' => $questions));
+        }
+        $filename = 'quiz/' . rand(1000, 9999);
+        $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
+        $myfile = fopen($full_path, "w") or die("Unable to open file!");
+        fwrite($myfile, $page->getContent());
+        fclose($myfile);
+        return $this->render('FrontBundle:Default:quiz.html.twig', array('filename' => $filename, 'full_path' => $full_path,));
     }
 
 

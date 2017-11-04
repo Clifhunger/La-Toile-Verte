@@ -37,3 +37,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.twig.delete:
+        class: FrontBundle\Twig\TwigExtension
+        tags:
+            - { name: twig.extension }

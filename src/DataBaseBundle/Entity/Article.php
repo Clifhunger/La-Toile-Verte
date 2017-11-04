@@ -196,4 +196,14 @@ class Article
      *
      */
     protected $visible;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
