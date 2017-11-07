@@ -79,6 +79,10 @@ class ComposerStaticInit374429f4ab4935127e2d36a0613c8d3a
         array (
             'Composer\\CaBundle\\' => 18,
         ),
+        'B' => 
+        array (
+            'Buzz\\' => 5,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -226,6 +230,10 @@ class ComposerStaticInit374429f4ab4935127e2d36a0613c8d3a
         array (
             0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
         ),
+        'Buzz\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kriswallsmith/buzz/lib/Buzz',
+        ),
     );
 
     public static $fallbackDirsPsr4 = array (
@@ -245,6 +253,13 @@ class ComposerStaticInit374429f4ab4935127e2d36a0613c8d3a
             'SensioLabs\\Security' => 
             array (
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Bundle\\DisqusBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-disqus-bundle',
             ),
         ),
         'D' => 

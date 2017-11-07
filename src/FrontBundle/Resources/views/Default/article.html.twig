@@ -1,0 +1,88 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block body %}
+    {% block connected_content %}
+        <div class="container">
+            <div class="row">
+                <h1>{{ article.title }}</h1>
+                </br>
+                {% if article.image %}
+                <img height="400px" src="{{ article.image }}" alt="photoDetailArticle">
+                {% endif %}
+                <div class="col-md-offset-0 col-md-11">
+                    <article>
+                        <p>{{ article.detail }}</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="row">
+                <p>Cet article vous a plû ? N'hésitez pas à aimer et commenter !</p>
+            </div>
+            
+            <div class="row">
+                <p>Créé le : <span class="cd-date" style="padding-bottom:0px">{{ article.dateCreation|date('d/m/Y') }}</span></p>
+            </div>
+
+                <!--<div class="row commentaires">
+                    <h3>Commentaires</h3>-->
+                    {{ knp_disqus_render('La-Toile-Verte', {'identifier': "/article/id=" ~ article.id, 'limit': 10, 'language': 'fr_formal'}) }}
+                    <!--<div class="col-lg-11 commentaire">
+                            <div class="col-xs-10 col-lg-10">
+                                <h5>flo17730</h5>
+                            </div>
+                            <div class="col-xs-10 col-lg-10">
+                                <p>Franchement je trouve que c'est un truc de ouf ça!</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Le 29/10/2017 à 21:20</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <svg fill="#FFFFFF" height="35" viewBox="0 0 24 24" width="25" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle">
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" fill="forestgreen"/>
+                                </svg>
+                                21
+                            </div>
+                        </div>
+
+                        <div class="col-lg-11 commentaire">
+                            <div class="col-xs-10 col-lg-10">
+                                <h5>flo17730</h5>
+                            </div>
+                            <div class="col-xs-10 col-lg-10">
+                                <p>C'est pour quand ?</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <p>Le 30/10/2017 à 12:22</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <svg fill="#FFFFFF" height="35" viewBox="0 0 24 24" width="25" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle">
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" fill="forestgreen"/>
+                                </svg>
+                                10
+                            </div>
+                        </div>
+
+
+                    <div class="col-lg-offset-1 col-lg-11 AjoutCommentaire">
+                        <h5>Voulez-vous ajouter un commentaire ?</h5>
+                        <form action="" method="post" id="formcommentaire">
+                            <div class="col-xs-10 col-lg-10 zoneTexte">
+                                <textarea rows="4" id="comment" name="comment"></textarea>
+                            </div>
+                            <div class="col-xs-1 col-lg-1">
+                                <input type="submit" id="btn" name="btn" value="Valider">
+                            </div>
+                        </form>
+                    </div>-->
+                <!--</div>-->
+
+        </div>
+    {% endblock %}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/article.css') }}">
+{% endblock %}

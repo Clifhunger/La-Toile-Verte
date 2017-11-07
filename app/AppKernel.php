@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FrontBundle\FrontBundle(),
             new DataBaseBundle\DataBaseBundle(),
             new AdminBundle\AdminBundle(),
+            new Knp\Bundle\DisqusBundle\KnpDisqusBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

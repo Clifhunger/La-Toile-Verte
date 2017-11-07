@@ -2516,5 +2516,113 @@
             "database",
             "orm"
         ]
+    },
+    {
+        "name": "kriswallsmith/buzz",
+        "version": "v0.15.1",
+        "version_normalized": "0.15.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kriswallsmith/Buzz.git",
+            "reference": "d59932b335c2f2f3ec9eee66a37db6bd50d39e13"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/d59932b335c2f2f3ec9eee66a37db6bd50d39e13",
+            "reference": "d59932b335c2f2f3ec9eee66a37db6bd50d39e13",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.3.3 || ^7.0"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "^3.3"
+        },
+        "suggest": {
+            "ext-curl": "*"
+        },
+        "time": "2017-08-19T09:43:47+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Buzz\\": "lib/Buzz"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kris Wallsmith",
+                "email": "kris.wallsmith@gmail.com",
+                "homepage": "http://kriswallsmith.net/"
+            }
+        ],
+        "description": "Lightweight HTTP client",
+        "homepage": "https://github.com/kriswallsmith/Buzz",
+        "keywords": [
+            "curl",
+            "http client"
+        ]
+    },
+    {
+        "name": "knplabs/knp-disqus-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Knp/Bundle/DisqusBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/KnpDisqusBundle.git",
+            "reference": "fb5bccf0bc9ca037d90801a2fdff100fb3a07697"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/KnpDisqusBundle/zipball/fb5bccf0bc9ca037d90801a2fdff100fb3a07697",
+            "reference": "fb5bccf0bc9ca037d90801a2fdff100fb3a07697",
+            "shasum": ""
+        },
+        "require": {
+            "kriswallsmith/buzz": "~0.7",
+            "php": ">=5.3.3",
+            "symfony/framework-bundle": "^2.3|^3.0"
+        },
+        "require-dev": {
+            "symfony/yaml": "^2.3|^3.0"
+        },
+        "time": "2017-04-09T16:33:00+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Knp\\Bundle\\DisqusBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/KnpDisqusBundle/contributors"
+            }
+        ],
+        "homepage": "http://github.com/KnpLabs/KnpDisqusBundle",
+        "keywords": [
+            "comments",
+            "disqus",
+            "forum"
+        ]
     }
 ]

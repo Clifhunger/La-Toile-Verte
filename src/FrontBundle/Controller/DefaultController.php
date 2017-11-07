@@ -43,4 +43,15 @@ class DefaultController extends Controller
         $articles = $em->getRepository('DataBaseBundle:Article')->findVisible();
         return $this->render('FrontBundle:Default:blog.html.twig', array('articles' => $articles));
     }
+
+    /**
+     *  @Route("/article/id={id}", name="article")
+     */
+    public function articleAction($id)
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('DataBaseBundle:Article');
+        $article = $repository->find($id);
+
+        return $this->render('FrontBundle:Default:article.html.twig', array('article'=>$article));
+    }
 }

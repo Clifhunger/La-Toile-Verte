@@ -85,3 +85,10 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+# Disqus Configuration
+knp_disqus:
+    api_key: '%knp_disqus.api_key%'
+    forums:
+        lorem:
+            shortname: '%knp_disqus.lorem.shortname%'
