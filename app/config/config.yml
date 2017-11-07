@@ -12,6 +12,10 @@ parameters:
     locale: fr
     mailer_user: la-toile-verte@gmail.com
     mailer_user_name: La Toile Verte
+    knp_disqus.api_key: LaToileVerteApiKey
+    # Insert your disqus shortname
+    # it's the unique identifier for your website as registered on Disqus
+    knp_disqus.lorem.shortname: "La-Toile-Verte"
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
