@@ -38,3 +38,8 @@ body{
     background-attachment:fixed;
 }
 
+.navbar-toggler, .navbar-toggler collapsed{
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
