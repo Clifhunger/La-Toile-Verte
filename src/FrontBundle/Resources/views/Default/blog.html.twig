@@ -5,8 +5,9 @@
    {% if articles %}
         <section id="cd-timeline" class="cd-container">
            {% for article in articles %}
-               <a href="article/id={{ article.id }}" style="text-decoration: none;">
-                   <div  class="cd-timeline-block">
+
+               <div  class="cd-timeline-block">
+                   <a href="article/id={{ article.id }}" style="text-decoration: none;">
                        <div class="cd-timeline-img cd-picture">
                        </div> <!-- cd-timeline-img -->
 
@@ -40,8 +41,8 @@
                            </div>
                            <span class="cd-date" style="padding-bottom:0px">{{ article.dateCreation|date('d/m/Y') }}</span>
                        </div> <!-- cd-timeline-content -->
-                   </div>
-               </a>
+                   </a>
+               </div>
            {% endfor %}
 
         </section> <!-- cd-timeline -->
