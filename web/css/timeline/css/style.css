@@ -3,8 +3,12 @@
 Primary style
 
 -------------------------------- */
-/*
-je suis la modif*/
+body{
+  background-image: url("arbre.png")!important;
+  background-color: white;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,7 +25,7 @@ h3{
 }
 a {
   color: #acb7c0;
-  text-decoration: none;
+  text-decoration: none!important;
   font-family: "Open Sans", sans-serif;
 }
 a :hover
@@ -276,6 +280,8 @@ Main components
   clear: both;
   text-decoration: none;
 }
+
+
 .cd-timeline-content h2 {
   color: #303e49;
 }
@@ -339,7 +345,7 @@ Main components
     width: 39%;
   }
   .cd-timeline-content::before {
-    top: 155px;
+    top: 150px;
     left: 100.5%;
     border-color: transparent;
     border-left-color:forestgreen ;
@@ -350,10 +356,13 @@ Main components
   .cd-timeline-content .cd-date {
     position: absolute;
     left: 140%;
-    top: 33%;
+    top: 69%;
     font-size: 24px;
     font-size: 1.5rem;
     color:forestgreen;
+  }
+  .cd-timeline-block a{
+    color: black;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content {
     float: right;
@@ -362,7 +371,7 @@ Main components
     border-left: solid 3px forestgreen;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
-    top: 55%;
+    top: 150px;
     left: auto;
     right: 100.5%;
     border-color: transparent;
