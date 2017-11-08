@@ -86,12 +86,15 @@ h2 { margin-top: 20px !important;  color: white !important; }
 .droite{
     border-top: solid 2px forestgreen;
     border-bottom: solid 2px forestgreen;
+    padding-top: 1px;
 }
 
 .gauche {
+
     border-top: solid 2px forestgreen;
     border-bottom: solid 2px forestgreen;
     background-color: rgba(255,255,255,0.7);
+    padding-top: 1px;
 }
 
 .article {
@@ -118,7 +121,7 @@ h2 { margin-top: 20px !important;  color: white !important; }
 }
 
 iframe{
-    height: 100%!important;
+    height: 500px!important;
     width: 100%!important;
 }
 
