@@ -221,3 +221,11 @@ overflow: hidden;
     transition-duration: 1s;
     margin-left: 100px;
 }
+
+.button-articles{
+    margin-left:15px;
+}
+
+textarea {
+    resize: none !important;
+}
