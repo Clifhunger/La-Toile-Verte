@@ -47,40 +47,9 @@
         </header>
 
         <div class="content-wrapper">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Date de création</th>
-                        <th>Titre</th>
-                        <th>Détail</th>
-                        <th>Image</th>
-                        <th>Visible</th>
-                        <th>Description</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>{{ article.id }}</td>
-                            <td>{{ article.dateCreation|date('d/m/Y') }}</td>
-                            <td><textarea>{{ article.title }}</textarea></td>
-                            <td><textarea>{{ article.detail }}</textarea></td>
-                            <td><textarea>{{ article.image }}</textarea></td>
-                            <td>
-                                {% if article.visible %}
-                                    <input type="checkbox" checked/>
-                                {% else %}
-                                    <input type="checkbox"/>
-                                {% endif %}
-                            </td>
-                            <td><textarea>{{ article.description }}</textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            {#<a href="{{ path('update_article', {'title': 'test'}) }}" >#}<button>Valider</button>{#</a>#}
+            {{ form_start(form, {'method': 'post'})}}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
         </div>
 
 <footer></footer>

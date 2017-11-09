@@ -192,7 +192,7 @@ class Article
     protected $image;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean")
      *
      */
     protected $visible;
