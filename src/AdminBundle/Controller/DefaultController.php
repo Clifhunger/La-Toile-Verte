@@ -43,6 +43,7 @@ class DefaultController extends Controller
             ->add('dateCreation', DateType::class, array('label' => 'Date de création'))
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextType::class, array('label' => 'Description'))
+            ->add('image', TextType::class, array('label' => 'Image'))
             ->add('detail', TextType::class, array('label' => 'Détail'))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Modifier article'))
