@@ -44,7 +44,7 @@ class DefaultController extends Controller
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextType::class, array('label' => 'Description'))
             ->add('detail', TextType::class, array('label' => 'Détail'))
-            ->add('visible', CheckboxType::class, array('label' => 'Visible'))
+            ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Modifier article'))
             ->getForm();
 
