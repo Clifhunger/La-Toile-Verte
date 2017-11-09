@@ -34,7 +34,7 @@ class User extends BaseUser
      *     groups={"Registration", "Profile"}
      * )
      */
-    protected $fisrtName;
+    protected $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -82,27 +82,27 @@ class User extends BaseUser
     }
 
     /**
-     * Set fisrtName
+     * Set firstName
      *
-     * @param string $fisrtName
+     * @param string $firstName
      *
      * @return User
      */
-    public function setfisrtName($fisrtName)
+    public function setfirstName($firstName)
     {
-        $this->fisrtName = $fisrtName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     /**
-     * Get fisrtName
+     * Get firstName
      *
      * @return string
      */
-    public function getfisrtName()
+    public function getfirstName()
     {
-        return $this->fisrtName;
+        return $this->firstName;
     }
 
     /**
