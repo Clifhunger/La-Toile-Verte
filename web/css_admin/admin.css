@@ -216,7 +216,9 @@ overflow: hidden;
     margin-left: 320px;
     margin-top: 120px;
     transition-duration: 1s;
+    padding-right: 15px;
 }
+
 .grand{
     transition-duration: 1s;
     margin-left: 100px;
