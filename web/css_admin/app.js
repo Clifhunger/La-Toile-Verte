@@ -15,4 +15,14 @@
         $('div.content-wrapper').removeClass('grand');
     })
 
+    $("#liste_articles").hide();
+
+    $("#modify").click(function hideAndShow(){
+        if ($("#liste_articles").is(':visible')){
+            $("#liste_articles").hide();
+        } else {
+            $("#liste_articles").show();
+        }
+    });
+
 })(jQuery);
