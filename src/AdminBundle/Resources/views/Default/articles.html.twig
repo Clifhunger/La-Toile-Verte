@@ -48,10 +48,10 @@
 
         <div class="content-wrapper">
             <div class="row">
-                <button class="button-articles">Modifier article</button>
+                <button class="button-articles" onclick="hideAndShow()">Modifier article</button>
             </div>
             <br>
-            <div class="card mb-3">
+            <div class="card mb-3" id="liste_articles">
                 <div class="card-header">
                     <i class="fa fa-table"></i> Liste articles</div>
                 <div class="card-body">
@@ -97,6 +97,15 @@
 
 
 {% block javascripts %}
+    <script>
+        function hideAndShow(){
+            if ($("#liste_articles").is(':visible')){
+                $("#liste_articles").hide();
+            } else {
+                $("#liste_articles").show();
+            }
+        }
+    </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
