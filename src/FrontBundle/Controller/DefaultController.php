@@ -17,20 +17,34 @@ class DefaultController extends Controller
 
     /**
      *  @Route("/quiz", name="quiz")
+     *  @Route("/quiz/{id}", name="quiz_id", requirements={"id": "\d+"})
      */
-    public function quizAction()
+    public function quizAction($id = null)
     {
-        $quizes = $this->getDoctrine()->getRepository('DataBaseBundle:Quiz')->find(1);
-        $questions = $quizes->getQuestions();
-        if ($quizes) {
-            $page = $this->render('default.htm.twig', array('quiz' => $quizes, 'questions' => $questions));
+        if ($id == null) {
+            return $this->render('FrontBundle:Default:quiz.html.twig');
         }
-        $filename = 'quiz/' . rand(1000, 9999);
-        $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
-        $myfile = fopen($full_path, "w") or die("Unable to open file!");
-        fwrite($myfile, $page->getContent());
-        fclose($myfile);
-        return $this->render('FrontBundle:Default:quiz.html.twig', array('filename' => $filename, 'full_path' => $full_path,));
+        else {
+            $quizes = $this->getDoctrine()->getRepository('DataBaseBundle:Quiz')->find($id);
+            if ($quizes) {
+                $questions = $quizes->getQuestions();
+                $page = $this->render('default.htm.twig', array('quiz' => $quizes, 'questions' => $questions));
+            
+                $filename = 'quiz/' . rand(1000, 9999);
+                $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
+                $myfile = fopen($full_path, "w") or die("Unable to open file!");
+                fwrite($myfile, $page->getContent());
+                fclose($myfile);
+                return $this->render('FrontBundle:Default:quiz.html.twig', array('filename' => $filename, 'full_path' => $full_path,));
+            }
+            else {
+                $this->addFlash(
+                    'error',
+                    'Quiz Introuvable'
+                );
+                return $this->redirectToRoute('quiz');
+            }
+        }
     }
 
 
