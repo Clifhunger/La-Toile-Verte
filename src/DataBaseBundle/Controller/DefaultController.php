@@ -5,11 +5,6 @@ namespace DataBaseBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use DataBaseBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -36,7 +31,7 @@ class DefaultController extends Controller
             ),
             'required' => true,
         ))
-        ->add('school', TextType::class, array('label' => 'Établissement', 'required' => true))
+        ->add('school', xTextType::class, array('label' => 'Établissement', 'required' => true))
         ->add('signin', SubmitType::class, array('label' => 'S\'inscrire'))
         ->getForm();
 
