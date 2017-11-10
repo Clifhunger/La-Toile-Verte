@@ -57,7 +57,7 @@
         </div>
     </div>
 {% else %}
-<div class="container SansArticle">
+<div class="SansArticle">
         {{ form_start(form) }}
         {% if app.session.flashbag.peek("error") %}
             {{ form_widget(form.id,
