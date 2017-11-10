@@ -208,7 +208,7 @@ overflow: hidden;
 }
 
 .rotation .header__icon{
-    transform: rotate(360deg) ;
+    transform: rotate(180deg) ;
     transition-duration: 1s;
 }
 
