@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin", name="admin_home")
      */
     public function indexAction()
     {
@@ -21,7 +21,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/articles", name="adminArticles")
+     * @Route("/articles", name="admin_articles")
      */
     public function adminArticlesAction()
     {
@@ -31,7 +31,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/adminArticle/id={id}", name="adminArticle")
+     *  @Route("/adminArticle/id={id}", name="admin_modify_article")
      */
     public function adminArticleAction(Request $request, $id)
     {
@@ -62,7 +62,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/createArticle", name="createArticle")
+     *  @Route("/createArticle", name="create_article")
      */
     public function createArticleAction()
     {
