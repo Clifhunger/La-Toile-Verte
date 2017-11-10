@@ -47,7 +47,7 @@ class DefaultController extends Controller
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
             ->add('detail', TextareaType::class, array('label' => 'Détails'))
-            ->add('image', FileType::class, array('label' => 'Image'))
+            ->add('image', TextType::class, array('label' => 'Image'))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Modifier article'))
             ->getForm();
