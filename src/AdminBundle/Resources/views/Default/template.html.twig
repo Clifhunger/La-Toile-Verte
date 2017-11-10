@@ -12,10 +12,10 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-        <header class="header">
+        <header class="header rotation">
             <a class="header__icon" id="header__icon"></a>
             <h1 class="titre">Administration -- La Toile Verte</h1>
-            <nav class="menu" style="">
+            <nav class="menu reduit" style="">
                 <a class="svgIcon" href="{{ path('admin_home') }}">
                 <svg fill="#FFFFFF" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -45,7 +45,7 @@
             </nav>
 
         </header>
-        <div class="content-wrapper">
+        <div class="content-wrapper grand">
             <div class="container-fluid">
                 {% block content %}
                 {% endblock %}
