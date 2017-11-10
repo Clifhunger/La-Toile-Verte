@@ -52,12 +52,6 @@ class Article
     protected $likes;
 
     /**
-     * @ORM\Column(type="integer")
-     *
-     */
-    protected $comments;
-
-    /**
      * @return mixed
      */
     public function getLikes()
@@ -71,22 +65,6 @@ class Article
     public function setLikes($likes)
     {
         $this->likes = $likes;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * @param mixed $comments
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
     }
 
     /**
