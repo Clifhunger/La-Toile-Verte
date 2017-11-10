@@ -57,15 +57,30 @@
         </div>
     </div>
 {% else %}
-<div class="container SansArticle">
-    <form action="#">
-            <input id="quiz" class="form-control {% for message in app.session.flashbag.peek('error') %}is-invalid{% endfor %}" type="text" placeholder="Entrez le code du quiz" required/>
+<div class="SansArticle">
+        {{ form_start(form) }}
+        {% if app.session.flashbag.peek("error") %}
+            {{ form_widget(form.id,
+                {'attr':
+                    {'class': 'form-control is-invalid',
+                    'placeholder': 'Entrez le code du quiz'}
+                })
+            }}
+        {% else %}
+            {{ form_widget(form.id,
+                {'attr':
+                    {'class': 'form-control',
+                    'placeholder': 'Entrez le code du quiz'}
+                })
+            }}
+        {% endif %}
             {% for message in app.flashes('error') %}
                 <div class="invalid-feedback">
                     {{ message }}
                 </div>
             {% endfor %}
-    </form>
+        {{ form_widget(form.save, {'attr': {'hidden': 'true'}}) }}
+        {{ form_end(form) }}
 </div>
 {% endif %}
 {% endblock %}

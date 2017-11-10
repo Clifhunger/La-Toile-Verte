@@ -11,10 +11,10 @@
                                 <th>ID</th>
                                 <th>Date de création</th>
                                 <th>Titre</th>
+                                <th>Description</th>
                                 <th>Détail</th>
                                 <th>Image</th>
                                 <th>Visible</th>
-                                <th>Description</th>
                                 <th>Modifier</th>
                             </tr>
                             </thead>
@@ -25,10 +25,10 @@
                                     <td>{{ article.id }}</td>
                                     <td>{{ article.dateCreation|date('d/m/Y') }}</td>
                                     <td>{{ article.title }}</td>
+                                    <td>{{ article.description }}</td>
                                     <td>{{ article.detail }}</td>
                                     <td>{{ article.image }}</td>
                                     <td>{{ article.visible }}</td>
-                                    <td>{{ article.description }}</td>
                                     <td><a href="adminArticle/id={{ article.id }}"><button>Modifier</button></a></td>
                                 </tr>
                             {% endfor %}
