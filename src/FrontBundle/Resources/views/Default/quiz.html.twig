@@ -1,6 +1,7 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 
 {% block connected_content %}
+{% if filename is defined %}
     <div class="container">
 
         <div id="jsQuizEngine">
@@ -55,9 +56,22 @@
             Powered by <a href="https://github.com/crpietschmann/jsQuizEngine">jsQuizEngine</a> by <a href="http://pietschsoft.com">Chris Pietschmann</a>
         </div>
     </div>
+{% else %}
+<div class="container SansArticle">
+    <form action="#">
+            <input id="quiz" class="form-control {% for message in app.session.flashbag.peek('error') %}is-invalid{% endfor %}" type="text" placeholder="Entrez le code du quiz" required/>
+            {% for message in app.flashes('error') %}
+                <div class="invalid-feedback">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    </form>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block js %}
+    {% if filename is defined %}
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.4/bootstrap.min.js"></script>
@@ -68,6 +82,7 @@
             quizEngine = jsQuizEngine($('#jsQuizEngine'), { quizUrl: '{{ asset(filename) }}' });
         });
     </script>
+    {% endif %}
 {% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/timeline/css/reset.css') }}"> <!-- CSS reset -->
