@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +47,7 @@ class DefaultController extends Controller
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
             ->add('detail', TextareaType::class, array('label' => 'Détails'))
-            ->add('image', TextType::class, array('label' => 'Image'))
+            ->add('image', FileType::class, array('label' => 'Image'))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Modifier article'))
             ->getForm();
@@ -76,7 +77,7 @@ class DefaultController extends Controller
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
             ->add('detail', TextareaType::class, array('label' => 'Détails'))
-            ->add('image', TextType::class, array('label' => 'Image'))
+            ->add('image', FileType::class, array('label' => 'Image'))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Créer article'))
             ->getForm();
