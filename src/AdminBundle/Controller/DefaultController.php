@@ -55,7 +55,7 @@ class DefaultController extends Controller
             $article->setDetail($detail);
             $em->persist($article);
             $em->flush();
-            return $this->redirectToRoute('adminArticles');
+            return $this->redirectToRoute('admin_articles');
         }
 
         return $this->render('AdminBundle:Default:article.html.twig', array('article'=>$article, 'form' => $form->createView()));
