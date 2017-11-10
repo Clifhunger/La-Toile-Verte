@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Controller;
 
+use DataBaseBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -64,8 +65,28 @@ class DefaultController extends Controller
     /**
      *  @Route("/createArticle", name="create_article")
      */
-    public function createArticleAction()
+    public function createArticleAction(Request $request)
     {
-        return $this->render('AdminBundle:Default:createArticle.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $article = new Article();
+
+        $form = $this->createFormBuilder($article)
+            ->add('dateCreation', DateType::class, array('label' => 'Date de création'))
+            ->add('title', TextType::class, array('label' => 'Titre'))
+            ->add('description', TextType::class, array('label' => 'Description'))
+            ->add('image', TextType::class, array('label' => 'Image'))
+            ->add('detail', TextType::class, array('label' => 'Détail'))
+            ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
+            ->add('save', SubmitType::class, array('label' => 'Créer article'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $article->setLikes(0);
+            $em->persist($article);
+            $em->flush();
+            return $this->redirectToRoute('admin_articles');
+        }
+        return $this->render('AdminBundle:Default:createArticle.html.twig', array('form' => $form->createView()));
     }
 }

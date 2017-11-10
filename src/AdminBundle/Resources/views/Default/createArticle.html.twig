@@ -1,5 +1,8 @@
 {% extends "AdminBundle:Default:template.html.twig" %}
 {% block content %}
+    {{ form_start(form, {'method': 'post'})}}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 {% endblock %}
 
 
