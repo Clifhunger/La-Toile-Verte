@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,9 +44,9 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($article)
             ->add('dateCreation', DateType::class, array('label' => 'Date de création'))
             ->add('title', TextType::class, array('label' => 'Titre'))
-            ->add('description', TextType::class, array('label' => 'Description'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
+            ->add('detail', TextareaType::class, array('label' => 'Détails'))
             ->add('image', TextType::class, array('label' => 'Image'))
-            ->add('detail', TextType::class, array('label' => 'Détail'))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Modifier article'))
             ->getForm();
@@ -73,9 +74,9 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($article)
             ->add('dateCreation', DateType::class, array('label' => 'Date de création'))
             ->add('title', TextType::class, array('label' => 'Titre'))
-            ->add('description', TextType::class, array('label' => 'Description'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
+            ->add('detail', TextareaType::class, array('label' => 'Détails'))
             ->add('image', TextType::class, array('label' => 'Image'))
-            ->add('detail', TextType::class, array('label' => 'Détail'))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Créer article'))
             ->getForm();
