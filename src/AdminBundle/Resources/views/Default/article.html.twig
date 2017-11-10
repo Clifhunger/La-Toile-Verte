@@ -1,70 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}Admin La Toile Verte{% endblock %}</title>
-    {% block stylesheets %}
-
-    {% endblock %}
-    <link rel="stylesheet" href="{{ asset('css_admin/admin.css') }}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.png') }}" />
-</head>
-<body>
-        <header class="header">
-            <a class="header__icon" id="header__icon"></a>
-            <h1 class="titre">Administration -- La Toile Verte</h1>
-            <nav class="menu" style="">
-                <a class="svgIcon" href="admin">
-                <svg fill="#FFFFFF" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                </svg>
-                </a>
-                <a class="svgIcon" href="articles">
-                    <svg fill="#FFFFFF" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
-                    </svg>
-                </a>
-                <a class="svgIcon" href="#">
-                    <svg  height="48" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-                        <style type="text/css">
-                            .st0{fill:none;stroke:#FFFFFF;stroke-width:7;stroke-miterlimit:10;}
-                            .st1{fill:none;stroke:#FFFFFF;stroke-width:7;stroke-miterlimit:10;}
-                        </style>
-                        <circle id="XMLID1" class="st0" cx="25" cy="25" r="20"/>
-                        <line id="XMLID2" class="st1" x1="30.8" y1="34.2" x2="45" y2="45"/>
-                    </svg>
-                </a>
-                <a class="lienText" href="../admin"><h3>Accueil</h3></a>
-                <a class="lienText" href="../articles"><h3>Articles</h3></a>
-                <a class="lienText" href="#"><h3>Quiz</h3></a>
-            </nav>
-
-        </header>
-
-        <div class="content-wrapper">
-            {{ form_start(form, {'method': 'post'})}}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
-        </div>
-
-<footer></footer>
-
-
-{% block javascripts %}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ asset('css_admin/app.js')}}"></script>
+{% extends "AdminBundle:Default:template.html.twig" %}
+{% block content %}
+    {{ form_start(form, {'method': 'post'})}}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 {% endblock %}
-</body>
-</html>
-
 
 

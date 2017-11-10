@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin", name="adminHome")
      */
     public function indexAction()
     {
