@@ -4,11 +4,16 @@
     {% block connected_content %}
         <div class="container">
             <div class="row">
-                <h1>{{ article.title }}</h1>
-                </br>
-                {% if article.image %}
-                <img height="400px" src="{{ article.image }}" alt="photoDetailArticle">
-                {% endif %}
+                <div class="col-lg-4">
+                    <h1>{{ article.title }}</h1>
+                    </br>
+                </div>
+                <div class="col-lg-8">
+
+                    {% if article.image %}
+                    <img height="400px" src="{{ article.image }}" alt="photoDetailArticle" style="margin-right: auto;margin-left: auto">
+                    {% endif %}
+                </div>
                 <div class="col-md-offset-0 col-md-11">
                     <article>
                         <p>{{ article.detail }}</p>

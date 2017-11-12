@@ -548,3 +548,20 @@ Main components
   border: solid 2px;
   border-color: forestgreen;
 }
+
+
+.filter{
+  background-color: forestgreen!important;
+  border-color: forestgreen!important;
+}
+.down, .up {
+   background-color: forestgreen!important;
+   border-color: forestgreen!important;
+   height: 50px;
+   width: 50px;
+   padding: 0px!important;
+ }
+
+.down,.filter, .up :hover{
+  cursor: pointer;
+}

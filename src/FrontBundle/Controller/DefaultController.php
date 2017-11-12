@@ -2,10 +2,13 @@
 
 namespace FrontBundle\Controller;
 
+use DataBaseBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -96,6 +99,53 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('DataBaseBundle:Article')->findVisible();
         return $this->render('FrontBundle:Default:blog.html.twig', array('articles' => $articles));
+    }
+
+    /**
+     *  @Route("/blogTCroissant", name="blogTrieCroissant")
+     */
+    public function BlogTrieCAction( Request $request)
+    {
+        $form = $this->createFormBuilder()
+            ->add('Recherhce', SearchType ::class, array('label' => 'Rechercher', 'required'   => false,))
+            ->add('trie_par', ChoiceType::class, array('label' => 'Trier par', 'required' => false,
+                'choices'  => array('Titre' =>'title', 'Date' => 'dateCreation', 'Nombre de vue' => 'likes','Nombre de commentaire' => 'nb-com')))
+            ->add('filtrer', SubmitType::class, array('label' => 'Filtrer'))
+            ->add('Croissant', SubmitType::class)
+            ->add('Decroissant', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+        if($form->get('Decroissant')->isClicked())
+        {
+            return $this->redirectToRoute('blogTrieDecroissant', array('request' => $request),307);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository('DataBaseBundle:Article')->rechercheCustumC($form->getData());
+        return $this->render('FrontBundle:Default:blog.html.twig',array('articles' => $articles,'form' => $form->createView()));
+    }
+    /**
+     *  @Route("/blogTDecroissant", name="blogTrieDecroissant")
+     */
+    public function BlogTrieDAction( Request $request)
+    {
+        $form = $this->createFormBuilder()
+            ->add('Recherhce', SearchType ::class, array('label' => 'Rechercher', 'required'   => false,))
+            ->add('trie_par', ChoiceType::class, array('label' => 'Trier par', 'required' => false,
+                'choices'  => array('Titre' =>'title', 'Date' => 'dateCreation', 'Nombre de vue' => 'likes','Nombre de commentaire' => 'nb-com')))
+            ->add('filtrer', SubmitType::class, array('label' => 'Filtrer'))
+            ->add('Croissant', SubmitType::class)
+            ->add('Decroissant', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+        if($form->get('Croissant')->isClicked())
+        {
+            return $this->redirectToRoute('blogTrieCroissant', array('request' => $request),307);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository('DataBaseBundle:Article')->rechercheCustumD($form->getData());
+        return $this->render('FrontBundle:Default:blog.html.twig',array('articles' => $articles,'form' => $form->createView()));
     }
 
     /**
