@@ -2,30 +2,35 @@
 
 {% block body %}
     {% block connected_content %}
-        <div class="container">
+        <div class="container" style="background-color: white; padding: 30px;">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                     <h1>{{ article.title }}</h1>
                     </br>
                 </div>
-                <div class="col-lg-8">
+                   <div class="col-lg-1">
+                   </div>
+                <div class="col-lg-6">
 
                     {% if article.image %}
                     <img height="400px" src="{{ article.image }}" alt="photoDetailArticle" style="margin-right: auto;margin-left: auto">
                     {% endif %}
                 </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
                 <div class="col-md-offset-0 col-md-11">
-                    <article>
+                    <article style="  text-align: justify;
+    text-justify: inter-word;">
                         <p>{{ article.detail }}</p>
                     </article>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-top: 10px;">
                 <p>Cet article vous a plû ? N'hésitez pas à aimer et commenter !</p>
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-bottom: 60px;">
                 <p>Créé le : <span class="cd-date" style="padding-bottom:0px">{{ article.dateCreation|date('d/m/Y') }}</span></p>
             </div>
 
