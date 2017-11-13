@@ -52,3 +52,9 @@ body{
 #btn:hover {
     background-color: #5ed75e;
 }
+
+@media screen and (max-width: 1500px) {
+    body{
+        background-image: none!important;
+    }
+}
