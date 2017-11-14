@@ -50,14 +50,14 @@ class QuizSession
     private $code;
 
     /**
-     * @ORM\OneToOne(targetEntity="Quiz")
+     * @ORM\ManyToOne(targetEntity="Quiz")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
      */
     private $quiz;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $creator;
 

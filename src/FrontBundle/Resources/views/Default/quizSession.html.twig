@@ -1,14 +1,45 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 
 {% block connected_content %}
+<div class="container">
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="form-group">
+        {{ form_label(form.quiz) }}
+        {{ form_widget(form.quiz,
+        {  'attr' : { 'class' : 'form-control'}}
+        ) }}
+    </div>
+    <div class="form-row form-group">
+        <div class="col">
+        {{ form_label(form.begin_date) }}
+        {{ form_widget(form.begin_date,
+            {  'attr' : { 'class' : 'form-control'}}
+            ) }}
+        </div>
+        <div class="col">
+        {{ form_label(form.end_date) }}
+        {{ form_widget(form.end_date,
+            {  'attr' : { 'class' : 'form-control'}}
+            ) }}
+        </div>
+    </div>
+    <div class="form-group">
+    {{ form_label(form.submit) }}
+    {{ form_widget(form.submit,
+        {  'attr' : { 'class' : 'btn btn-primary'}}
+        ) }}
+    </div>
     {{ form_end(form) }}
 
-    <p>Vos Quiz</p>
-    <ul>
-    {% for session in quiz_sessions %}
-        <li>{{ session.quiz.label }}: {{ session.code }}</li>
-    {% endfor %}
-    </ul>
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+                <h4 class="card-title">Sessions créés par vous</h4>
+            <ul class="list-group">
+            {% for session in quiz_sessions %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">{{ session.quiz.label }}<span class="badge badge-info">{{ session.code }}</span></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
