@@ -24,11 +24,22 @@ class DefaultController extends Controller
         return $this->render('FrontBundle:Default:home.html.twig');
     }
 
-    public function errorRedirect($message) {
-        $this->addFlash(
-            'error',
-            $message
-        );
+    /**
+     * @Route("/quiz/handleQuizSessionsAction", name="handleQuizSessionsAction")
+     */
+    public function handleQuizSessionsAction() {
+        $em = $this->getDoctrine()->getManager();
+        $quizSession = $em->getRepository('DataBaseBundle:QuizSession')->findOneByCode($_POST["code"]);
+        if(array_key_exists("edit", $_POST)) {
+
+        }
+        if(array_key_exists("delete", $_POST)) {
+            $em->remove($quizSession);
+            $em->flush();
+            $filename = 'quiz/' . $_POST["code"];
+            $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
+            unlink($full_path);
+        }
         return $this->redirectToRoute('quiz');
     }
 
@@ -49,12 +60,16 @@ class DefaultController extends Controller
                     'choice_label' => 'label',
                 ))
                 ->add('begin_date', DateTimeType ::class, array(
-                    'label' => 'Début'
+                    'label' => 'Début',
+                    'view_timezone' => 'Europe/Paris',
+                    'model_timezone' => 'Europe/Paris',
                 ))
                 ->add('end_date', DateTimeType ::class, array(
-                    'label' => 'Fin'
+                    'label' => 'Fin',
+                    'view_timezone' => 'Europe/Paris',
+                    'model_timezone' => 'Europe/Paris',
                 ))
-                ->add('submit', SubmitType::class, array('label' => 'Ajouter'))
+                ->add('submit', SubmitType::class, array('label' => 'Créer'))
                 ->getForm();
         
             $form->handleRequest($request);
@@ -102,6 +117,7 @@ class DefaultController extends Controller
                 
                 if ($form->isSubmitted() && $form->isValid()) {
                     $quizSessionCode = $form->getData();
+                    $quizSessionCode = str_replace('#', '', $quizSessionCode);
                     $quizSession = $this->getDoctrine()->getRepository('DataBaseBundle:QuizSession')->findOneByCode($quizSessionCode);
 
                     if($quizSession) {
