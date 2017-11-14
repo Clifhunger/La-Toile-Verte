@@ -1,0 +1,14 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block connected_content %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <p>Vos Quiz</p>
+    <ul>
+    {% for session in quiz_sessions %}
+        <li>{{ session.quiz.label }}: {{ session.code }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
