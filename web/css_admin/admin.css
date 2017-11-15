@@ -229,6 +229,10 @@ overflow: hidden;
     margin-left:15px;
 }
 
+.button-quiz{
+    margin-left:15px;
+}
+
 textarea {
     resize: none !important;
 }

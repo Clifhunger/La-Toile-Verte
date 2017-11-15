@@ -91,4 +91,42 @@ class DefaultController extends Controller
         }
         return $this->render('AdminBundle:Default:createArticle.html.twig', array('form' => $form->createView()));
     }
+
+    /**
+     *  @Route("/createQuiz", name="create_quiz")
+     */
+    public function createQuiz(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = new Article();
+
+        $form = $this->createFormBuilder($article)
+            ->add('dateCreation', DateType::class, array('label' => 'Date de création'))
+            ->add('title', TextType::class, array('label' => 'Titre'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
+            ->add('detail', TextareaType::class, array('label' => 'Détails'))
+            ->add('image', FileType::class, array('label' => 'Image'))
+            ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
+            ->add('save', SubmitType::class, array('label' => 'Créer article'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $article->setLikes(0);
+            $em->persist($article);
+            $em->flush();
+            return $this->redirectToRoute('admin_articles');
+        }
+        return $this->render('AdminBundle:Default:createArticle.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/adminQuiz", name="admin_quiz")
+     */
+    public function adminQuizAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $quiz = $em->getRepository('DataBaseBundle:Quiz')->findAll();
+        return $this->render('AdminBundle:Default:quiz.html.twig', array('quizs' => $quiz));
+    }
 }
