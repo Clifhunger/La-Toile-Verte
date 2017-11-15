@@ -31,12 +31,12 @@ header{
     width: auto;
 
 }
-body{
+body {
     background-image: url("test4.png");
     background-color: white;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    font-family:"Open Sans", sans-serif!important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Roboto','Open Sans', sans-serif!important;
 }
 
 .navbar-toggler, .navbar-toggler collapsed{
