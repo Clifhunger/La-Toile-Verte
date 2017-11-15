@@ -1,0 +1,32 @@
+{% extends "AdminBundle:Default:template.html.twig" %}
+{% block content %}
+            <div class="card mb-3 row">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Liste des quiz</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Description</th>
+                                <th>Modifier</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for quiz in quizs%}
+                                <tr>
+                                    <td>{{ quiz.id }}</td>
+                                    <td>{{ quiz.label }}</td>
+                                    <td>{{ quiz.desc }}</td>
+                                    <td><a href="adminQuiz/id={{ quiz.id }}"><button>Modifier</button></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
