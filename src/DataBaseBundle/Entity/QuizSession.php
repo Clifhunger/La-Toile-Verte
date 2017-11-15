@@ -50,16 +50,19 @@ class QuizSession
     private $code;
 
     /**
-     * @ORM\OneToOne(targetEntity="Quiz")
+     * @ORM\ManyToOne(targetEntity="Quiz")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
      */
     private $quiz;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $creator;
+
+    /** @ORM\Column(type="string") */
+    private $timezone;
 
     /**
      * Get id
@@ -92,6 +95,7 @@ class QuizSession
      */
     public function getCreationDate()
     {
+        $this->creationDate->setTimeZone(new \DateTimeZone($this->timezone));
         return $this->creationDate;
     }
 
@@ -104,6 +108,8 @@ class QuizSession
      */
     public function setEndDate($endDate)
     {
+        $this->timezone = $endDate->getTimeZone()->getName();
+        $endDate->setTimeZone(new \DateTimeZone('UTC'));
         $this->endDate = $endDate;
     
         return $this;
@@ -116,6 +122,8 @@ class QuizSession
      */
     public function getEndDate()
     {
+        if ($this->endDate)
+            $this->endDate->setTimeZone(new \DateTimeZone($this->timezone));
         return $this->endDate;
     }
 
@@ -128,6 +136,8 @@ class QuizSession
      */
     public function setBeginDate($beginDate)
     {
+        $this->timezone = $beginDate->getTimeZone()->getName();
+        $beginDate->setTimeZone(new \DateTimeZone('UTC'));
         $this->beginDate = $beginDate;
     
         return $this;
@@ -140,6 +150,8 @@ class QuizSession
      */
     public function getBeginDate()
     {
+        if ($this->beginDate)
+            $this->beginDate->setTimeZone(new \DateTimeZone($this->timezone));
         return $this->beginDate;
     }
 
@@ -213,5 +225,29 @@ class QuizSession
     public function getCreator()
     {
         return $this->creator;
+    }
+
+    /**
+     * Set timezone
+     *
+     * @param string $timezone
+     *
+     * @return QuizSession
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+    
+        return $this;
+    }
+
+    /**
+     * Get timezone
+     *
+     * @return string
+     */
+    public function getTimezone()
+    {
+        return $this->timezone;
     }
 }

@@ -44,3 +44,7 @@ body {
     margin-bottom: 0px;
 }
 
+.navbar-collapse{
+    margin-bottom: 0px!important;
+}
+

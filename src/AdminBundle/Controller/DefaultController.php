@@ -91,4 +91,14 @@ class DefaultController extends Controller
         }
         return $this->render('AdminBundle:Default:createArticle.html.twig', array('form' => $form->createView()));
     }
+
+    /**
+     * @Route("/adminQuiz", name="admin_quiz")
+     */
+    public function adminQuizAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $quiz = $em->getRepository('DataBaseBundle:Quiz')->findAll();
+        return $this->render('AdminBundle:Default:quiz.html.twig', array('quizs' => $quiz));
+    }
 }
