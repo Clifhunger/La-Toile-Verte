@@ -3,10 +3,12 @@
 namespace AdminBundle\Controller;
 
 use DataBaseBundle\Entity\Article;
+use DataBaseBundle\Entity\Question;
 use DataBaseBundle\Entity\Quiz;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -124,5 +126,58 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $quiz = $em->getRepository('DataBaseBundle:Quiz')->findAll();
         return $this->render('AdminBundle:Default:quiz.html.twig', array('quizs' => $quiz));
+    }
+
+    /**
+     *  @Route("/createQuestion", name="create_question")
+     */
+    public function createQuestionAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $allQuiz = $em->getRepository('DataBaseBundle:Quiz')->findAll();
+        $question = new Question();
+        $form = $this->createFormBuilder($question)
+            ->add('quiz', ChoiceType::class, array(
+                'label' => 'Quiz',
+                'choices'  => $allQuiz,
+                'choice_label' => 'label',
+                'required' => true,))
+            ->add('label', TextType::class, array('label' => 'Titre'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
+            ->add('save', SubmitType::class, array('label' => 'Créer question'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em->persist($question);
+            $em->flush();
+            return $this->redirectToRoute('admin_quiz');
+        }
+        return $this->render('AdminBundle:Default:createQuestion.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     *  @Route("/adminQuiz/id={id}", name="admin_modify_quiz")
+     */
+    public function modifyArticleAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getManager()->getRepository('DataBaseBundle:Quiz');
+        $quiz = $repository->find($id);
+
+        $form = $this->createFormBuilder($quiz)
+            ->add('label', TextType::class, array('label' => 'Titre'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
+            ->add('save', SubmitType::class, array('label' => 'Modifier quiz'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em->persist($quiz);
+            $em->flush();
+            return $this->redirectToRoute('admin_quiz');
+        }
+
+        return $this->render('AdminBundle:Default:modifyQuiz.html.twig', array('article'=>$quiz, 'form' => $form->createView()));
     }
 }
