@@ -9,7 +9,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nom</th>
+                                <th>Titre</th>
                                 <th>Description</th>
                                 <th>Modifier</th>
                             </tr>
@@ -20,7 +20,7 @@
                                 <tr>
                                     <td>{{ quiz.id }}</td>
                                     <td>{{ quiz.label }}</td>
-                                    <td>{{ quiz.desc }}</td>
+                                    <td>{{ quiz.description }}</td>
                                     <td><a href="adminQuiz/id={{ quiz.id }}"><button>Modifier</button></a></td>
                                 </tr>
                             {% endfor %}
@@ -28,5 +28,8 @@
                         </table>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <a href="{{ path('create_quiz') }}"><button class="button-articles">Créer quiz</button></a>
             </div>
 {% endblock %}

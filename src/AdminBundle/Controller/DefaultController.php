@@ -3,6 +3,7 @@
 namespace AdminBundle\Controller;
 
 use DataBaseBundle\Entity\Article;
+use DataBaseBundle\Entity\Quiz;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -90,6 +91,29 @@ class DefaultController extends Controller
             return $this->redirectToRoute('admin_articles');
         }
         return $this->render('AdminBundle:Default:createArticle.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     *  @Route("/createQuiz", name="create_quiz")
+     */
+    public function createQuizAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $quiz = new Quiz();
+
+        $form = $this->createFormBuilder($quiz)
+            ->add('label', TextType::class, array('label' => 'Titre'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
+            ->add('save', SubmitType::class, array('label' => 'Créer quiz'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em->persist($quiz);
+            $em->flush();
+            return $this->redirectToRoute('admin_quiz');
+        }
+        return $this->render('AdminBundle:Default:createQuiz.html.twig', array('form' => $form->createView()));
     }
 
     /**
