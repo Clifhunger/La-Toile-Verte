@@ -1,6 +1,7 @@
 <?php
 
 namespace DataBaseBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -58,8 +59,6 @@ class Question
     {
         $this->options = new ArrayCollection();
     }
-
-
 
     /**
      * Get id
@@ -172,7 +171,7 @@ class Question
      *
      * @return string
      */
-    public function getDesc()
+    public function getDescription()
     {
         return $this->description;
     }
