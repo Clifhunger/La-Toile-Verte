@@ -136,6 +136,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $allQuiz = $em->getRepository('DataBaseBundle:Quiz')->findAll();
         $question = new Question();
+
         $form = $this->createFormBuilder($question)
             ->add('quiz', ChoiceType::class, array(
                 'label' => 'Quiz',
