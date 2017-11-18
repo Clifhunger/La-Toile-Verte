@@ -87,9 +87,22 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
+
+            $image = $form["image"]->getData();
+            $lien=$this->get('kernel')->getRootDir() . "\..\web\articles\img";
+
+            $length=strripos($image,".")-strripos($image,"\\");
+            $nom=substr($image,strripos($image,"\\"),$length);
+            $nom=$nom.".png";
+
             $article->setLikes(0);
+            $article->setImage($lien.$nom);
+
             $em->persist($article);
             $em->flush();
+
+            move_uploaded_file( $image , $lien.$nom );
+
             return $this->redirectToRoute('admin_articles');
         }
         return $this->render('AdminBundle:Default:createArticle.html.twig', array('form' => $form->createView()));
