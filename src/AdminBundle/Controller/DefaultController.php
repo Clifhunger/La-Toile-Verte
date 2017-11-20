@@ -53,13 +53,22 @@ class DefaultController extends Controller
             ->add('image', TextType::class, array('label' => 'Image'))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Modifier article'))
+            ->add('suppr', SubmitType::class, array('label' => 'Supprimer article', 'attr' => array(
+                'onclick' => 'return confirm("Confirmer la suppression ?")'
+            )))
             ->getForm();
 
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && 'save' === $form->getClickedButton()->getName()) {
             $detail = $form["detail"]->getData();
             $article->setDetail($detail);
             $em->persist($article);
+            $em->flush();
+            return $this->redirectToRoute('admin_articles');
+        }
+
+        if ($form->isSubmitted() && 'suppr' === $form->getClickedButton()->getName()) {
+            $em->remove($article);
             $em->flush();
             return $this->redirectToRoute('admin_articles');
         }
