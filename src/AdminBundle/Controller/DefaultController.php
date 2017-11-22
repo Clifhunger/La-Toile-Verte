@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 class DefaultController extends Controller
 {
@@ -23,7 +24,32 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AdminBundle:Default:template.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $session = $em->getRepository('DataBaseBundle:QuizSession')->findSession();
+        $chart=array();
+        $j=0;
+        for ($i=0;$j<sizeof($session);++$j)
+        {
+            $dateJ=Date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")-(10-$j), date("Y")));
+            if($session[$i]['creationDate']->format('Y-m-d')==$dateJ)
+            {
+                array_push($chart,$session[$i]);
+                ++$i;
+            }
+            else{
+                array_push($chart,array('creationDate'=>$dateJ,'nbre'=>0));
+
+            }
+        }
+            for ($j;$j<11;++$j) {
+                $dateJ=Date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")-(10-$j), date("Y")));
+                array_push($chart,array('creationDate'=>$dateJ,'nbre'=>0));
+            }
+
+
+
+
+        return $this->render('AdminBundle:Default:index.html.twig',array('chart'=>$chart));
     }
 
     /**

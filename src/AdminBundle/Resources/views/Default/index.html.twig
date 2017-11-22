@@ -1,4 +1,35 @@
-{% extends "AdminBundle::template.html.twig" %}
-{% block body %}
-    <h1>test</h1>
+{% extends "AdminBundle:Default:template.html.twig" %}
+{% block content %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-area-chart">Sessions créés</i></div>
+        <div class="card-body">
+            <div id="chartContainer" style="height: 300px;width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </div>
+    </div>
+        <script>
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    theme: "light2",
+                    axisY:{
+                        includeZero: false
+                    },
+                    data: [{
+                        type: "line",
+                        lineColor: "green",
+                        markerColor:"green",
+
+                        dataPoints: [
+                            {% for item in chart %}
+                            {label:'{{ item.creationDate | date("d/m")}}', y: {{ item.nbre }} },
+                            {% endfor %}
+                        ]
+                    }]
+                });
+                chart.render();
+            }
+        </script>
+
 {% endblock %}
