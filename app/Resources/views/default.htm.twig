@@ -1,4 +1,4 @@
-﻿<section class="quiz" data-title="{{ quiz.label }}" data-subtitle="{{ quiz.desc }}">
+﻿<section class="quiz" data-title="{{ quiz.label }}" data-subtitle="{{ quiz.description }}">
     {% for question in questions %}
     <section class="question">
         <section class="text">
@@ -7,8 +7,8 @@
         {% for option in question.options %}
         <section class="answer" {% if option.answer %} data-correct {% endif %}>{{ option.value }}</section>
         {% endfor %}
-        {% if question.desc != null %}
-        <section class="description">{{ question.desc }}</section>
+        {% if question.description != null %}
+        <section class="description">{{ question.description }}</section>
         {% endif %}
         {% if question.hint != null %}
         <section class="hint">{{ question.hint }}</section>
