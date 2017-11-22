@@ -225,14 +225,6 @@ overflow: hidden;
     margin-left: 100px;
 }
 
-.button-articles{
-    margin-left:15px;
-}
-
-.button-quiz{
-    margin-left:15px;
-}
-
 textarea {
     resize: none !important;
 }

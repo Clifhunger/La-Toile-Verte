@@ -3,6 +3,7 @@
 namespace DataBaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Quiz
@@ -31,9 +32,9 @@ class Quiz
     /**
      * @var string
      *
-     * @ORM\Column(name="desc", type="string")
+     * @ORM\Column(name="description", type="string")
      */
-    private $desc;
+    private $description;
 
     /**
      *
@@ -122,9 +123,9 @@ class Quiz
      *
      * @return Quiz
      */
-    public function setDesc($desc)
+    public function setDescription($desc)
     {
-        $this->desc = $desc;
+        $this->description = $desc;
     
         return $this;
     }
@@ -134,8 +135,8 @@ class Quiz
      *
      * @return string
      */
-    public function getDesc()
+    public function getDescription()
     {
-        return $this->desc;
+        return $this->description;
     }
 }

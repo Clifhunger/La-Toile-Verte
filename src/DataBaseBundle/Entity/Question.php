@@ -1,6 +1,7 @@
 <?php
 
 namespace DataBaseBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,9 +38,9 @@ class Question
     /**
      * @var string
      *
-     * @ORM\Column(name="desc", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
-    private $desc;
+    private $description;
 
     /**
      * @var string
@@ -58,8 +59,6 @@ class Question
     {
         $this->options = new ArrayCollection();
     }
-
-
 
     /**
      * Get id
@@ -156,13 +155,13 @@ class Question
     /**
      * Set desc
      *
-     * @param string $desc
+     * @param string $description
      *
      * @return Question
      */
-    public function setDesc($desc)
+    public function setDescription($description)
     {
-        $this->desc = $desc;
+        $this->description = $description;
     
         return $this;
     }
@@ -172,9 +171,9 @@ class Question
      *
      * @return string
      */
-    public function getDesc()
+    public function getDescription()
     {
-        return $this->desc;
+        return $this->description;
     }
 
     /**
