@@ -6,6 +6,7 @@
         $('nav').toggleClass('reduit');
         $('header').toggleClass('rotation');
         $('div.content-wrapper').toggleClass('grand');
+        $('canvas.canvasjs-chart-canvas').toggleClass('min');
     });
 
     /* Je veux pouvoir masquer le menu si on clique sur le cache */
@@ -13,6 +14,7 @@
         $('nav').removeClass('reduit');
         $('header').removeClass('rotation');
         $('div.content-wrapper').removeClass('grand');
+        $('canvas.canvasjs-chart-canvas').removeClass('min');
     })
 
 })(jQuery);
