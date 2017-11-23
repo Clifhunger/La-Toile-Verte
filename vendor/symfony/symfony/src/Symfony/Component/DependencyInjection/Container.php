@@ -49,11 +49,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
  */
 class Container implements ResettableContainerInterface
 {
-    /**
-     * @var ParameterBagInterface
-     */
     protected $parameterBag;
-
     protected $services = array();
     protected $methodMap = array();
     protected $aliases = array();
@@ -73,9 +69,6 @@ class Container implements ResettableContainerInterface
     private $envCache = array();
     private $compiled = false;
 
-    /**
-     * @param ParameterBagInterface $parameterBag A ParameterBagInterface instance
-     */
     public function __construct(ParameterBagInterface $parameterBag = null)
     {
         $this->parameterBag = $parameterBag ?: new EnvPlaceholderParameterBag();
@@ -439,11 +432,11 @@ class Container implements ResettableContainerInterface
         if (isset($this->envCache[$name]) || array_key_exists($name, $this->envCache)) {
             return $this->envCache[$name];
         }
-        if (isset($_SERVER[$name]) && 0 !== strpos($name, 'HTTP_')) {
-            return $this->envCache[$name] = $_SERVER[$name];
-        }
         if (isset($_ENV[$name])) {
             return $this->envCache[$name] = $_ENV[$name];
+        }
+        if (isset($_SERVER[$name]) && 0 !== strpos($name, 'HTTP_')) {
+            return $this->envCache[$name] = $_SERVER[$name];
         }
         if (false !== ($env = getenv($name)) && null !== $env) { // null is a possible value because of thread safety issues
             return $this->envCache[$name] = $env;
