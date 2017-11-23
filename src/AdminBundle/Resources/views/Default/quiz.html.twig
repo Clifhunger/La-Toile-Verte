@@ -11,6 +11,7 @@
                                 <th>ID</th>
                                 <th>Titre</th>
                                 <th>Description</th>
+                                <th>Certifiant</th>
                                 <th>Modifier</th>
                             </tr>
                             </thead>
@@ -21,6 +22,7 @@
                                     <td>{{ quiz.id }}</td>
                                     <td>{{ quiz.label }}</td>
                                     <td>{{ quiz.description }}</td>
+                                    <td>{{ quiz.certified }}</td>
                                     <td><a href="quiz/id={{ quiz.id }}"><button>Modifier</button></a></td>
                                 </tr>
                             {% endfor %}
