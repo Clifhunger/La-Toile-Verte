@@ -25,7 +25,7 @@ class FilesystemLoader extends Loader
     protected $templatePathPatterns;
 
     /**
-     * @param array $templatePathPatterns An array of path patterns to look for templates
+     * @param string|string[] $templatePathPatterns An array of path patterns to look for templates
      */
     public function __construct($templatePathPatterns)
     {
@@ -34,8 +34,6 @@ class FilesystemLoader extends Loader
 
     /**
      * Loads a template.
-     *
-     * @param TemplateReferenceInterface $template A template
      *
      * @return Storage|bool false if the template cannot be loaded, a Storage instance otherwise
      */

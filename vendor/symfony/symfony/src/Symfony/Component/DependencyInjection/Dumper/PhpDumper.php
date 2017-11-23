@@ -42,15 +42,11 @@ class PhpDumper extends Dumper
 {
     /**
      * Characters that might appear in the generated variable name as first character.
-     *
-     * @var string
      */
     const FIRST_CHARS = 'abcdefghijklmnopqrstuvwxyz';
 
     /**
      * Characters that might appear in the generated variable name as any but the first character.
-     *
-     * @var string
      */
     const NON_FIRST_CHARS = 'abcdefghijklmnopqrstuvwxyz0123456789_';
 
@@ -67,7 +63,7 @@ class PhpDumper extends Dumper
     private $usedMethodNames;
 
     /**
-     * @var \Symfony\Component\DependencyInjection\LazyProxy\PhpDumper\DumperInterface
+     * @var ProxyDumper
      */
     private $proxyDumper;
 
@@ -87,8 +83,6 @@ class PhpDumper extends Dumper
 
     /**
      * Sets the dumper to be used when dumping proxies in the generated container.
-     *
-     * @param ProxyDumper $proxyDumper
      */
     public function setProxyDumper(ProxyDumper $proxyDumper)
     {
@@ -104,8 +98,6 @@ class PhpDumper extends Dumper
      *  * base_class: The base class name
      *  * namespace:  The class namespace
      *
-     * @param array $options An array of options
-     *
      * @return string A PHP class representing of the service container
      *
      * @throws EnvParameterException When an env var exists but has not been dumped
@@ -120,7 +112,11 @@ class PhpDumper extends Dumper
             'debug' => true,
         ), $options);
 
-        $this->initializeMethodNamesMap($options['base_class']);
+        if (0 !== strpos($baseClass = $options['base_class'], '\\') && 'Container' !== $baseClass) {
+            $baseClass = sprintf('%s\%s', $options['namespace'] ? '\\'.$options['namespace'] : '', $baseClass);
+        }
+
+        $this->initializeMethodNamesMap('Container' === $baseClass ? Container::class : $baseClass);
 
         $this->docStar = $options['debug'] ? '*' : '';
 
@@ -149,7 +145,7 @@ class PhpDumper extends Dumper
             }
         }
 
-        $code = $this->startClass($options['class'], $options['base_class'], $options['namespace']);
+        $code = $this->startClass($options['class'], $baseClass, $options['namespace']);
 
         if ($this->container->isCompiled()) {
             $code .= $this->addFrozenConstructor();
@@ -272,9 +268,6 @@ class PhpDumper extends Dumper
 
     /**
      * Generates the require_once statement for service includes.
-     *
-     * @param Definition $definition
-     * @param array      $inlinedDefinitions
      *
      * @return string
      */
@@ -434,9 +427,9 @@ class PhpDumper extends Dumper
      *
      * @return bool
      */
-    private function isSimpleInstance($id, Definition $definition)
+    private function isSimpleInstance($id, Definition $definition, array $inlinedDefinitions)
     {
-        foreach (array_merge(array($definition), $this->getInlinedDefinitions($definition)) as $sDefinition) {
+        foreach (array_merge(array($definition), $inlinedDefinitions) as $sDefinition) {
             if ($definition !== $sDefinition && !$this->hasReference($id, $sDefinition->getMethodCalls())) {
                 continue;
             }
@@ -1227,10 +1220,6 @@ EOF;
 
     /**
      * Builds service calls from arguments.
-     *
-     * @param array $arguments
-     * @param array &$calls    By reference
-     * @param array &$behavior By reference
      */
     private function getServiceCallsFromArguments(array $arguments, array &$calls, array &$behavior)
     {
@@ -1257,8 +1246,6 @@ EOF;
     /**
      * Returns the inline definition.
      *
-     * @param Definition $definition
-     *
      * @return array
      */
     private function getInlinedDefinitions(Definition $definition)
@@ -1282,8 +1269,6 @@ EOF;
 
     /**
      * Gets the definition from arguments.
-     *
-     * @param array $arguments
      *
      * @return array
      */
@@ -1724,7 +1709,13 @@ EOF;
 
     private function doExport($value)
     {
-        $export = var_export($value, true);
+        if (is_string($value) && false !== strpos($value, "\n")) {
+            $cleanParts = explode("\n", $value);
+            $cleanParts = array_map(function ($part) { return var_export($part, true); }, $cleanParts);
+            $export = implode('."\n".', $cleanParts);
+        } else {
+            $export = var_export($value, true);
+        }
 
         if ("'" === $export[0] && $export !== $resolvedExport = $this->container->resolveEnvPlaceholders($export, "'.\$this->getEnv('%s').'")) {
             $export = $resolvedExport;

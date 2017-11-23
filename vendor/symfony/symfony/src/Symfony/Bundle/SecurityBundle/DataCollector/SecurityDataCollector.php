@@ -38,13 +38,6 @@ class SecurityDataCollector extends DataCollector implements LateDataCollectorIn
     private $firewallMap;
     private $hasVarDumper;
 
-    /**
-     * @param TokenStorageInterface|null          $tokenStorage
-     * @param RoleHierarchyInterface|null         $roleHierarchy
-     * @param LogoutUrlGenerator|null             $logoutUrlGenerator
-     * @param AccessDecisionManagerInterface|null $accessDecisionManager
-     * @param FirewallMapInterface|null           $firewallMap
-     */
     public function __construct(TokenStorageInterface $tokenStorage = null, RoleHierarchyInterface $roleHierarchy = null, LogoutUrlGenerator $logoutUrlGenerator = null, AccessDecisionManagerInterface $accessDecisionManager = null, FirewallMapInterface $firewallMap = null)
     {
         $this->tokenStorage = $tokenStorage;
@@ -243,9 +236,9 @@ class SecurityDataCollector extends DataCollector implements LateDataCollectorIn
     }
 
     /**
-     * Get the provider key (i.e. the name of the active firewall).
+     * Get the logout URL.
      *
-     * @return string The provider key
+     * @return string The logout URL
      */
     public function getLogoutUrl()
     {
