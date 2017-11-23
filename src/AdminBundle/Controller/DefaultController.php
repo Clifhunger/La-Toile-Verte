@@ -50,7 +50,7 @@ class DefaultController extends Controller
             ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
             ->add('detail', TextareaType::class, array('label' => 'Détails'))
-            ->add('image', TextType::class, array('label' => 'Image'))
+            ->add('image', FileType::class, array('label' => 'Image', 'data_class'   =>  null, 'required' => false))
             ->add('visible', CheckboxType::class, array('label' => 'Visible', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Modifier article'))
             ->add('suppr', SubmitType::class, array('label' => 'Supprimer article', 'attr' => array(
@@ -58,12 +58,30 @@ class DefaultController extends Controller
             )))
             ->getForm();
 
+        $image_before = $article->getImage();
         $form->handleRequest($request);
         if ($form->isSubmitted() && 'save' === $form->getClickedButton()->getName()) {
-            $detail = $form["detail"]->getData();
-            $article->setDetail($detail);
+            $image = $form["image"]->getData();
+            $length=strripos($image,".")-strripos($image,"\\");
+            $nom=substr($image,strripos($image,"\\"),$length);
+
+            if ( $nom!="" ) {
+                $image = $form["image"]->getData();
+                $lien=$this->get('kernel')->getRootDir() . "\..\web\articles\img";
+
+                $nom=$nom.".png";
+
+                $article->setImage($lien.$nom);
+                move_uploaded_file( $image , $lien.$nom );
+            } else {
+                $article->setImage($image_before);
+                $article->setDescription($image_before);
+            }
+
+            $article->setLikes(0);
             $em->persist($article);
             $em->flush();
+
             return $this->redirectToRoute('admin_articles');
         }
 
