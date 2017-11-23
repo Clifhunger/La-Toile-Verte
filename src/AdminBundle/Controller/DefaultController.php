@@ -200,7 +200,7 @@ class DefaultController extends Controller
     /**
      *  @Route("/adminQuiz/id={id}", name="admin_modify_quiz")
      */
-    public function modifyArticleAction(Request $request, $id)
+    public function modifyQuizAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getManager()->getRepository('DataBaseBundle:Quiz');
