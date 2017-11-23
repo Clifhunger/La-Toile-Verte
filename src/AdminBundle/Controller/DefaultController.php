@@ -53,7 +53,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/articles", name="admin_articles")
+     * @Route("/admin/articles", name="admin_articles")
      */
     public function adminArticlesAction()
     {
@@ -63,7 +63,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/adminArticle/id={id}", name="admin_modify_article")
+     *  @Route("/admin/articles/id={id}", name="admin_modify_article")
      */
     public function adminArticleAction(Request $request, $id)
     {
@@ -103,7 +103,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/createArticle", name="create_article")
+     *  @Route("/admin/createArticle", name="create_article")
      */
     public function createArticleAction(Request $request)
     {
@@ -144,7 +144,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/createQuiz", name="create_quiz")
+     *  @Route("/admin/createQuiz", name="create_quiz")
      */
     public function createQuizAction(Request $request)
     {
@@ -167,7 +167,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/adminQuiz", name="admin_quiz")
+     * @Route("admin/quiz", name="admin_quiz")
      */
     public function adminQuizAction()
     {
@@ -177,7 +177,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/createQuestion", name="create_question")
+     *  @Route("/admin/createQuestion", name="create_question")
      */
     public function createQuestionAction(Request $request)
     {
@@ -206,7 +206,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/adminQuiz/id={id}", name="admin_modify_quiz")
+     *  @Route("/admin/quiz/id={id}", name="admin_modify_quiz")
      */
     public function modifyArticleAction(Request $request, $id)
     {
