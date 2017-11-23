@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 class DefaultController extends Controller
 {
@@ -23,11 +24,36 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AdminBundle:Default:template.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $session = $em->getRepository('DataBaseBundle:QuizSession')->findSession();
+        $chart=array();
+        $j=0;
+        for ($i=0;$j<sizeof($session);++$j)
+        {
+            $dateJ=Date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")-(10-$j), date("Y")));
+            if($session[$i]['creationDate']->format('Y-m-d')==$dateJ)
+            {
+                array_push($chart,$session[$i]);
+                ++$i;
+            }
+            else{
+                array_push($chart,array('creationDate'=>$dateJ,'nbre'=>0));
+
+            }
+        }
+            for ($j;$j<11;++$j) {
+                $dateJ=Date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")-(10-$j), date("Y")));
+                array_push($chart,array('creationDate'=>$dateJ,'nbre'=>0));
+            }
+
+
+
+
+        return $this->render('AdminBundle:Default:index.html.twig',array('chart'=>$chart));
     }
 
     /**
-     * @Route("/articles", name="admin_articles")
+     * @Route("/admin/articles", name="admin_articles")
      */
     public function adminArticlesAction()
     {
@@ -37,7 +63,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/adminArticle/id={id}", name="admin_modify_article")
+     *  @Route("/admin/articles/id={id}", name="admin_modify_article")
      */
     public function adminArticleAction(Request $request, $id)
     {
@@ -95,7 +121,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/createArticle", name="create_article")
+     *  @Route("/admin/createArticle", name="create_article")
      */
     public function createArticleAction(Request $request)
     {
@@ -136,7 +162,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/createQuiz", name="create_quiz")
+     *  @Route("/admin/createQuiz", name="create_quiz")
      */
     public function createQuizAction(Request $request)
     {
@@ -159,7 +185,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/adminQuiz", name="admin_quiz")
+     * @Route("admin/quiz", name="admin_quiz")
      */
     public function adminQuizAction()
     {
@@ -169,7 +195,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/createQuestion", name="create_question")
+     *  @Route("/admin/createQuestion", name="create_question")
      */
     public function createQuestionAction(Request $request)
     {
@@ -198,7 +224,7 @@ class DefaultController extends Controller
     }
 
     /**
-     *  @Route("/adminQuiz/id={id}", name="admin_modify_quiz")
+     *  @Route("/admin/quiz/id={id}", name="admin_modify_quiz")
      */
     public function modifyQuizAction(Request $request, $id)
     {

@@ -22,9 +22,9 @@ class QuizSession
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="creationDate", type="datetimetz")
+     * @ORM\Column(name="creationDate", type="date")
      */
     private $creationDate;
 

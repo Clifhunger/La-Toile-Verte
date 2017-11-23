@@ -10,4 +10,9 @@ namespace DataBaseBundle\Repository;
  */
 class QuizSessionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findSession(){
+        $query = $this->_em->createQuery('SELECT a.creationDate,COUNT (a.creationDate) as nbre FROM DataBaseBundle:QuizSession a WHERE a.creationDate > (CURRENT_DATE()-10) GROUP BY a.creationDate');
+        $result = $query->getResult();
+        return $result;
+    }
 }
