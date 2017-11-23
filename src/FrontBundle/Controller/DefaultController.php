@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 class DefaultController extends Controller
 {
@@ -152,11 +153,33 @@ class DefaultController extends Controller
             else {            
                 $filename = 'quiz/' . $id;
                 $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
-                return $this->render('FrontBundle:Default:quiz.html.twig', array('filename' => $filename, 'full_path' => $full_path,));
+                return $this->render('FrontBundle:Default:quiz.html.twig', array('filename' => $filename, 'full_path' => $full_path, 'id' => $id));
             }
         }
     }
 
+    /**
+     * @Route("/quiz/{id}/finishQuiz", name="finishQuiz", requirements={"id": "\d+"})
+     */
+    public function finishQuizfAction($id = null, Request $request) {
+        return null;
+    }
+
+    /**
+     * @Route("/quiz/{id}/getCertif", name="getCertif", requirements={"id": "\d+"})
+     */
+    public function getCertifAction($id = null, Request $request) {
+        $html = $this->renderView('FrontBundle:Default:certification.html.twig', array(
+            'user'  => $this->getUser(),
+            'date' => $_POST['date'],
+            'percent' => $_POST['percent'],
+        ));
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'certification.pdf'
+        );
+    }
 
     /**
      *  @Route("/blog", name="blog")

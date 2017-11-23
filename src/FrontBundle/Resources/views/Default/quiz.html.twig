@@ -4,7 +4,7 @@
 {% if filename is defined %}
     <div class="container">
 
-        <div id="jsQuizEngine">
+        <div id="jsQuizEngine" style="display: none;">
             <section id="title" data-bind="visible: !quizStarted()">
                 <div class="jumbotron">
                     <h1 data-bind="text: quizTitle"></h1>
@@ -12,18 +12,29 @@
                     <p><button class="btn btn-primary btn-lg" data-bind="click: startQuiz">Commencer le quiz</button></p>
                 </div>
             </section>
-            <section class="quiz" data-bind="visible: quizStarted() && !quizComplete()">
+            <section class="quiz" data-bind="visible: quizStarted() && !quizComplete() && !quizValidated()" style="height: 80vh; position: relative;">
                 <div>Question <span data-bind="text: currentQuestionIndex"></span> sur <span data-bind="text: questionCount"></span></div>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
                 </div>
                 <div class="question-pool"></div>
-                <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
-                <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
-                <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
-                <button class="btn btn-primary" data-bind="click: calculateScore, visible: currentQuestionIsLast">Voir le résultat</button>
+                <div style="position: absolute; bottom: 0px; width: 100%;">
+                    <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
+                    <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
+                    <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
+                    <form action="{{ id }}/finishQuiz" method="post" target="_blank" style="display: inline;">
+                        <input type="hidden" name="date" data-bind="value: calculatedScoreDate">
+                        <input type="hidden" name="percent" data-bind="value: calculatedScore">
+                        <button type="submit" class="btn btn-primary" data-bind="click: validateResults, visible: currentQuestionIsLast">Terminer le quiz</button>
+                    </form>
+                    <h4 style="display: inline;position: absolute; right: 0px;"><span id="timer" class="badge badge-pill badge-primary" style="transition: 1s ease-in;" data-bind="visible: quizCertified(), text: timerText"></span></h4>
+                </div>
             </section>
-            <section class="score" data-bind="visible: quizComplete">
+            <section class="score" data-bind="visible: quizValidated() && !quizComplete()">
+                <h1>Le quiz est terminé</h1>
+                <button class="btn btn-primary" data-bind="click: getResults">Voir les résultats</button>
+            </section>
+            <section class="score" data-bind="visible: quizComplete()">
                 <p>Résultat :</p>
                 <h2 data-bind="text: quizTitle"></h2>
                 <h3 data-bind="text: quizSubTitle"></h3>
@@ -34,12 +45,14 @@
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': calculatedScore }, style: { width: calculatedScore() + '%' }, css: { 'progress-bar-success': quizPassed, 'progress-bar-danger': !quizPassed() }"></div>
                 </div>
-                <div class="pass-indicator">
+                <form class="pass-indicator" action="{{ id }}/getCertif" method="post" target="_blank">
                     <h1 data-bind="css: { 'text-success': quizPassed, 'text-danger': !quizPassed() }">
-                        <span data-bind="visible: quizPassed">RÉUSSI</span>
+                        <input type="hidden" name="date" data-bind="value: calculatedScoreDate">
+                        <input type="hidden" name="percent" data-bind="value: calculatedScore">
+                        <span data-bind="visible: quizPassed">RÉUSSI <button data-bind="visible: quizCertified()" class="btn btn-primary" type="submit" style="font-size: normal;">Récupérer ma certification</button></span>
                         <span data-bind="visible: !quizPassed()">RATÉ</span>
                     </h1>
-                </div>
+                </form>
                 <div class="solutions">
                     <div data-bind="foreach: { data: questions, as: 'question' }">
                         <h3>
@@ -51,9 +64,6 @@
                     <div data-bind="attr: {'id': 'solution-' + question.index}"></div>
                 </div>
             </section>
-        </div>
-        <div class="container">
-            Powered by <a href="https://github.com/crpietschmann/jsQuizEngine">jsQuizEngine</a> by <a href="http://pietschsoft.com">Chris Pietschmann</a>
         </div>
     </div>
 {% else %}
@@ -95,6 +105,7 @@
         var quizEngine = null;
         $(function () {
             quizEngine = jsQuizEngine($('#jsQuizEngine'), { quizUrl: '{{ asset(filename) }}' });
+            document.getElementById('jsQuizEngine').style.display = "block";
         });
     </script>
     {% endif %}

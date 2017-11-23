@@ -96,3 +96,15 @@ knp_disqus:
     forums:
         lorem:
             shortname: '%knp_disqus.lorem.shortname%'
+
+# Pdf configuration
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     '%kernel.project_dir%/web/bundles/knpSnappy/wkhtmltopdf'
+        options:    []
+    image:
+        enabled:    false
+        binary:     '%kernel.project_dir%/web/bundles/knpSnappy/wkhtmltoimage'
+        options:    []
+    process_timeout: 20 # In seconds

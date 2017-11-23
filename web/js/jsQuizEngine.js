@@ -14,7 +14,7 @@
     }
     function getNowDateTimeStamp() {
         var dt = new Date();
-        return dt.getMonth() + '/' + dt.getDate() + '/' + dt.getFullYear() + ' ' + dt.getHours() + ':' + (dt.getMinutes() >= 10 ? dt.getMinutes() : '0' + dt.getMinutes());
+        return dt.getDate() + '/' + dt.getMonth() + '/' + dt.getFullYear() + ' à ' + dt.getHours() + ':' + (dt.getMinutes() >= 10 ? dt.getMinutes() : '0' + dt.getMinutes());
     }
 
     var ViewModel = function (elem, options) {
@@ -40,15 +40,24 @@
 	        }
             self.quizTitle(getCurrentQuiz(self.element).attr('data-title'));
             self.quizSubTitle(getCurrentQuiz(self.element).attr('data-subtitle'));
+            self.quizCertified(getCurrentQuiz(self.element).attr('data-certified') == '1');
+            if (self.quizCertified()) {
+                self.timer(2400000);
+            }
         });
-        
+
         self.quizStarted = ko.observable(false);
         self.quizComplete = ko.observable(false);
+        self.quizValidated = ko.observable(false);
+        self.quizCertified = ko.observable(false);
 
         self.quizTitle = ko.observable('');
         self.quizSubTitle = ko.observable('');
         self.questionCount = ko.observable(0);
         self.questions = ko.observableArray([]);
+
+        self.timer = ko.observable(0);
+        self.timerText = ko.observable('')
 
         self.currentQuestionIndex = ko.observable(0);
         self.currentQuestionIndex.subscribe(function (newValue) {
@@ -78,12 +87,50 @@
             return (q.find('.hint').length > 0);
         });
 
+        var interval;
+
         self.startQuiz = function () {
             // reset quiz to start state
             self.currentQuestionIndex(0);
             self.currentQuestionIndex(1);
 
             self.quizStarted(true);
+
+            window.onbeforeunload = function() {
+                return "Si vous rafraîchissez la page vous perderez votre progression";
+            }
+
+            if (self.quizCertified()) {
+                var minutes = Math.floor((self.timer() % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((self.timer() % (1000 * 60)) / 1000);
+                var m = minutes > 9 ? "" + minutes: "0" + minutes;
+                var s = seconds > 9 ? "" + seconds: "0" + seconds;
+                self.timerText("Temps Restant : " + m + ":" + s);
+                interval = setInterval(self.timerStart, 1000);
+            }
+        }
+
+        self.timerStart = function () {
+            var minutes = Math.floor((self.timer() % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((self.timer() % (1000 * 60)) / 1000);
+            var m = minutes > 9 ? "" + minutes: "0" + minutes;
+            var s = seconds > 9 ? "" + seconds: "0" + seconds;
+
+            self.timerText("Temps Restant : " + m + ":" + s);
+
+            if (self.timer() <= 300000) {
+                document.getElementById("timer").className = "badge badge-pill badge-danger";
+              }
+
+            if (self.timer() < 0) {
+              clearInterval(interval);
+              alert('Le quiz est terminé');
+              self.quizValidated(true);
+              self.calculateScore();
+            }
+            else {
+                self.timer(self.timer() - 1000);
+            }
         }
 
         self.moveNextQuestion = function () {
@@ -102,7 +149,17 @@
             q.find('.description').slideDown();
         };
 
+        self.validateResults = function () {
+            var showResults = window.confirm('Vous ne pourrez plus modifier vos questions');
+            if (showResults) {
+                self.quizValidated(true);
+                self.calculateScore();
+            }
+        }
+
         self.calculateScore = function () {
+            window.onbeforeunload = null;
+            clearInterval(interval);
             var correctQuestions = [];
             getAllQuestions(self.element).each(function (i, e) {
                 var q = $(this);
@@ -120,6 +177,9 @@
                 self.calculatedScore( Math.round( (self.totalQuestionsCorrect() / self.questionCount() * 100) * 10 ) / 10 );
             }
             self.calculatedScoreDate(getNowDateTimeStamp());
+        };
+
+        self.getResults = function () {
             self.quizComplete(true);
             $( ".solutions").addClass( "question-pool" ); // needed for styling of questions
             var i = 1;
@@ -132,7 +192,7 @@
                 q.find('.hint').slideDown();
                 q.find('.description').slideDown();
             });
-        };
+        }
 
         self.totalQuestionsCorrect = ko.observable(0);
         self.calculatedScore = ko.observable(0);

@@ -37,6 +37,13 @@ class Quiz
     private $description;
 
     /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="certified", type="boolean")
+     */
+    private $certified;
+
+    /**
      *
      * @ORM\OneToMany(targetEntity="Question", mappedBy="quiz")
      */
@@ -138,5 +145,29 @@ class Quiz
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set certified
+     *
+     * @param boolean $certified
+     *
+     * @return Quiz
+     */
+    public function setCertified($certified)
+    {
+        $this->certified = $certified;
+    
+        return $this;
+    }
+
+    /**
+     * Get certified
+     *
+     * @return boolean
+     */
+    public function getCertified()
+    {
+        return $this->certified;
     }
 }
