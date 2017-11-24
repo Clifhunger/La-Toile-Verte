@@ -9,6 +9,8 @@
 
         {% block js %}
         {% endblock %}
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{{ asset('css_TemplateBase/main.css') }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -41,8 +43,15 @@
         </nav>
 
     </header>
+
         {% block fos_user_content %}
         {% endblock %}
+    <ul class="social-network social-circle">
+        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+    </ul>
 <!-- <footer>
             <div class="row">
                 <div class="col-lg-offset-4 col-lg-6">
