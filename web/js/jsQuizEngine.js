@@ -37,7 +37,7 @@
             self.questionCount(getAllQuestions(self.element).length);
     	    for (var i = 1; i <=  self.questionCount(); i++) {
 	        	self.questions.push({ index: i, content: getQuestionByIndex(self.element, i), correct: false});
-	        }
+            }
             self.quizTitle(getCurrentQuiz(self.element).attr('data-title'));
             self.quizSubTitle(getCurrentQuiz(self.element).attr('data-subtitle'));
             self.quizCertified(getCurrentQuiz(self.element).attr('data-certified') == '1');
@@ -150,9 +150,13 @@
         };
 
         self.validateResults = function () {
+            var code = document.getElementById('sessionId').value;
             var showResults = window.confirm('Vous ne pourrez plus modifier vos questions');
             if (showResults) {
                 self.quizValidated(true);
+                $.post(
+                    code + '/finishQuiz'
+                ); 
                 self.calculateScore();
             }
         }

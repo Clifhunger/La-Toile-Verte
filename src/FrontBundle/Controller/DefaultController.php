@@ -122,6 +122,13 @@ class DefaultController extends Controller
                     $quizSession = $this->getDoctrine()->getRepository('DataBaseBundle:QuizSession')->findOneByCode($quizSessionCode);
 
                     if($quizSession) {
+                        if ($quizSession->getDoneUsers()->contains($user)) {
+                            $this->addFlash(
+                                'error',
+                                'Vous avez déjà participé au quiz'
+                            );
+                            return $this->redirectToRoute('quiz');
+                        }
                         $now = new \DateTime("now");
                         if($quizSession->getBeginDate() > $now) {
                             $this->addFlash(
@@ -150,7 +157,40 @@ class DefaultController extends Controller
 
                 return $this->render('FrontBundle:Default:quiz.html.twig', array('form' => $form->createView(),));
             }
-            else {            
+            else {
+                $quizSession = $this->getDoctrine()->getRepository('DataBaseBundle:QuizSession')->findOneByCode($id);
+                
+                if($quizSession) {
+                    if ($quizSession->getDoneUsers()->contains($user)) {
+                        $this->addFlash(
+                            'error',
+                            'Vous avez déjà participé au quiz'
+                        );
+                        return $this->redirectToRoute('quiz');
+                    }
+                    $now = new \DateTime("now");
+                    if($quizSession->getBeginDate() > $now) {
+                        $this->addFlash(
+                            'error',
+                            'Le Quiz n\'est pas encore ouvert'
+                        );
+                        return $this->redirectToRoute('quiz');
+                    }
+                    if($quizSession->getEndDate() < $now) {
+                        $this->addFlash(
+                            'error',
+                            'Le Quiz est fermé'
+                        );
+                        return $this->redirectToRoute('quiz');
+                    }
+                }
+                else {
+                    $this->addFlash(
+                        'error',
+                        'Quiz Introuvable'
+                    );
+                    return $this->redirectToRoute('quiz');
+                }
                 $filename = 'quiz/' . $id;
                 $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
                 return $this->render('FrontBundle:Default:quiz.html.twig', array('filename' => $filename, 'full_path' => $full_path, 'id' => $id));
@@ -162,7 +202,11 @@ class DefaultController extends Controller
      * @Route("/quiz/{id}/finishQuiz", name="finishQuiz", requirements={"id": "\d+"})
      */
     public function finishQuizfAction($id = null, Request $request) {
-        return null;
+        $em = $this->getDoctrine()->getManager();
+        $quizSession = $em->getRepository('DataBaseBundle:QuizSession')->findOneByCode($id);
+        $user = $this->getUser();
+        $quizSession->addDoneUser($user);
+        $em->flush();
     }
 
     /**

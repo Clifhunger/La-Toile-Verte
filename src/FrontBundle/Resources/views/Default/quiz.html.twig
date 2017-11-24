@@ -22,11 +22,8 @@
                     <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
                     <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
                     <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
-                    <form action="{{ id }}/finishQuiz" method="post" target="_blank" style="display: inline;">
-                        <input type="hidden" name="date" data-bind="value: calculatedScoreDate">
-                        <input type="hidden" name="percent" data-bind="value: calculatedScore">
-                        <button type="submit" class="btn btn-primary" data-bind="click: validateResults, visible: currentQuestionIsLast">Terminer le quiz</button>
-                    </form>
+                    <input type="hidden" name="id" id="sessionId" value="{{ id }}">
+                    <button type="submit" class="btn btn-primary" data-bind="click: validateResults, visible: currentQuestionIsLast">Terminer le quiz</button>
                     <h4 style="display: inline;position: absolute; right: 0px;"><span id="timer" class="badge badge-pill badge-primary" style="transition: 1s ease-in;" data-bind="visible: quizCertified(), text: timerText"></span></h4>
                 </div>
             </section>

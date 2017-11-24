@@ -3,6 +3,7 @@
 namespace DataBaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * QuizSession
@@ -63,6 +64,21 @@ class QuizSession
 
     /** @ORM\Column(type="string") */
     private $timezone;
+
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="quiz_session_users_done",
+     *      joinColumns={@ORM\JoinColumn(name="quiz_session_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    protected $doneUsers;
+
+    public function __construct()
+    {
+        $this->doneUsers = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -249,5 +265,39 @@ class QuizSession
     public function getTimezone()
     {
         return $this->timezone;
+    }
+
+    /**
+     * Add doneUser
+     *
+     * @param \DataBaseBundle\Entity\User $doneUser
+     *
+     * @return QuizSession
+     */
+    public function addDoneUser(\DataBaseBundle\Entity\User $doneUser)
+    {
+        $this->doneUsers[] = $doneUser;
+    
+        return $this;
+    }
+
+    /**
+     * Remove doneUser
+     *
+     * @param \DataBaseBundle\Entity\User $doneUser
+     */
+    public function removeDoneUser(\DataBaseBundle\Entity\User $doneUser)
+    {
+        $this->doneUsers->removeElement($doneUser);
+    }
+
+    /**
+     * Get doneUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDoneUsers()
+    {
+        return $this->doneUsers;
     }
 }
