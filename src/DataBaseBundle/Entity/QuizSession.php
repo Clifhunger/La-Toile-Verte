@@ -70,7 +70,7 @@ class QuizSession
      * @ORM\ManyToMany(targetEntity="User")
      * @ORM\JoinTable(name="quiz_session_users_done",
      *      joinColumns={@ORM\JoinColumn(name="quiz_session_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
      *      )
      */
     protected $doneUsers;
@@ -78,13 +78,14 @@ class QuizSession
     /**
      * @var boolean
      *
-     * @ORM\Column(name="over", type="boolean", unique=true)
+     * @ORM\Column(name="over", type="boolean")
      */
     private $over;
 
     public function __construct()
     {
         $this->doneUsers = new ArrayCollection();
+        $this->over = false;
     }
 
     /**
