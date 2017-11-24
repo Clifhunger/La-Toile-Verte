@@ -28,7 +28,7 @@ class DefaultController extends Controller
         $session = $em->getRepository('DataBaseBundle:QuizSession')->findSession();
         $chart=array();
         $j=0;
-        for ($i=0;$j<sizeof($session);++$j)
+        for ($i=0;$i<sizeof($session);++$j)
         {
             $dateJ=Date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")-(10-$j), date("Y")));
             if($session[$i]['creationDate']->format('Y-m-d')==$dateJ)
@@ -38,17 +38,12 @@ class DefaultController extends Controller
             }
             else{
                 array_push($chart,array('creationDate'=>$dateJ,'nbre'=>0));
-
             }
         }
             for ($j;$j<11;++$j) {
                 $dateJ=Date('Y-m-d',mktime(0, 0, 0, date("m")  , date("d")-(10-$j), date("Y")));
                 array_push($chart,array('creationDate'=>$dateJ,'nbre'=>0));
             }
-
-
-
-
         return $this->render('AdminBundle:Default:index.html.twig',array('chart'=>$chart));
     }
 
