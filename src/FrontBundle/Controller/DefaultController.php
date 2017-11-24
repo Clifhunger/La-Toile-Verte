@@ -4,6 +4,7 @@ namespace FrontBundle\Controller;
 
 use DataBaseBundle\Entity\Article;
 use DataBaseBundle\Entity\QuizSession;
+use DataBaseBundle\Entity\ObtainedSession;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -121,7 +123,7 @@ class DefaultController extends Controller
                     $quizSessionCode = str_replace('#', '', $quizSessionCode);
                     $quizSession = $this->getDoctrine()->getRepository('DataBaseBundle:QuizSession')->findOneByCode($quizSessionCode);
 
-                    if(!$quizSession->getOver()) {
+                    if($quizSession) {
                         if ($quizSession->getDoneUsers()->contains($user)) {
                             $this->addFlash(
                                 'error',
@@ -202,27 +204,68 @@ class DefaultController extends Controller
      * @Route("/quiz/{id}/finishQuiz", name="finishQuiz", requirements={"id": "\d+"})
      */
     public function finishQuizfAction($id = null, Request $request) {
-        $em = $this->getDoctrine()->getManager();
-        $quizSession = $em->getRepository('DataBaseBundle:QuizSession')->findOneByCode($id);
-        $user = $this->getUser();
-        $quizSession->addDoneUser($user);
-        $em->flush();
+        if($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+            $quizSession = $em->getRepository('DataBaseBundle:QuizSession')->findOneByCode($id);
+            $user = $this->getUser();
+            $quizSession->addDoneUser($user);
+
+            $data = $request->request->get('request');
+
+            $obtainedSession = new ObtainedSession();
+            $obtainedSession
+            ->setUser($this->getUser())
+            ->setQuizSession($quizSession)
+            ->setDateObtained(\DateTime::createFromFormat("d/m/Y à H:i", $_POST['date'], new \DateTimeZone("Europe/Paris")))
+            ->setPercent($_POST['percent']);
+
+            $em->persist($obtainedSession);
+            $em->flush();
+        }
+
+        return new Response();
     }
 
     /**
      * @Route("/quiz/{id}/getCertif", name="getCertif", requirements={"id": "\d+"})
      */
     public function getCertifAction($id = null, Request $request) {
-        $html = $this->renderView('FrontBundle:Default:certification.html.twig', array(
-            'user'  => $this->getUser(),
-            'date' => $_POST['date'],
-            'percent' => $_POST['percent'],
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $quizSession = $em->getRepository('DataBaseBundle:QuizSession')->findOneByCode($id);
+        $user = $this->getUser();
+        $date = $_GET['date'];
+        if (gettype($date) == "array") {
+            $temp = \DateTime::createFromFormat('Y-m-d H:i', preg_replace('/\:(\d+)\.(\d+)/i', '', $date['date']));
+            $dateParsed = $temp->format('d/m/Y à H:i');
+        }
+        else {
+            $dateParsed = $date;
+        }
+        if ($quizSession->getDoneUsers()->contains($user)) {
+            $html = $this->renderView('FrontBundle:Default:certification.html.twig', array(
+                'user'  => $this->getUser(),
+                'date' => $dateParsed,
+                'percent' => $_GET['percent'],
+            ));
 
-        return new PdfResponse(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
-            'certification.pdf'
-        );
+            return new PdfResponse(
+                $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+                'certification.pdf'
+            );
+        }
+        else {
+            throw $this->createAccessDeniedException('Vous ne pouvez pas accéder à cette page');
+        }
+    }
+
+    /**
+     * @Route("/profile/certifications", name="myCertifications")
+     */
+    public function myCertificationsAction() {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $quizSessions = $em->getRepository('DataBaseBundle:ObtainedSession')->findByUser($user);
+        return $this->render('@FOSUser/Profile/myCertifications.html.twig', array('quizSessions' => $quizSessions));
     }
 
     /**

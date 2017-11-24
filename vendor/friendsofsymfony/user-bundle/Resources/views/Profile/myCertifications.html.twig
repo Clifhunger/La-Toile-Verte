@@ -1,0 +1,10 @@
+{% extends "@FOSUser/Profile/templateDashboard.html.twig" %}
+
+
+{% block content %}
+<div class="list-group">
+    {% for session in quizSessions %}
+        <a href="{{ path('getCertif', { 'id': session.quizSession.code, 'date': session.dateObtained, 'percent': session.percent }) }}" class="list-group-item list-group-item-action">Certification {{ session.quizSession.quiz.label }}</a>
+    {% endfor %}
+</div>
+{% endblock content %}

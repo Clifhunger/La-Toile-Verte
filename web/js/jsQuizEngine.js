@@ -154,10 +154,21 @@
             var showResults = window.confirm('Vous ne pourrez plus modifier vos questions');
             if (showResults) {
                 self.quizValidated(true);
-                $.post(
-                    code + '/finishQuiz'
-                ); 
                 self.calculateScore();
+                $.ajax({
+                    type: "POST",
+                    url: code + '/finishQuiz',
+                    data: { date: self.calculatedScoreDate(), percent : self.calculatedScore()},
+                    success: function(data, dataType)
+                    {
+                        alert("Vos réponses ont bien été prises en compte");
+                    },
+        
+                    error: function(XMLHttpRequest, textStatus, errorThrown)
+                    {
+                        alert('Une erreur est survenue: ' + errorThrown);
+                    }
+                }); 
             }
         }
 

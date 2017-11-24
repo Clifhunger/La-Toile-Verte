@@ -42,7 +42,7 @@
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': calculatedScore }, style: { width: calculatedScore() + '%' }, css: { 'progress-bar-success': quizPassed, 'progress-bar-danger': !quizPassed() }"></div>
                 </div>
-                <form class="pass-indicator" action="{{ id }}/getCertif" method="post" target="_blank">
+                <form class="pass-indicator" action="{{ id }}/getCertif" method="get" target="_blank">
                     <h1 data-bind="css: { 'text-success': quizPassed, 'text-danger': !quizPassed() }">
                         <input type="hidden" name="date" data-bind="value: calculatedScoreDate">
                         <input type="hidden" name="percent" data-bind="value: calculatedScore">
