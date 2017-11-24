@@ -35,7 +35,7 @@ class DefaultController extends Controller
 
         }
         if(array_key_exists("delete", $_POST)) {
-            $em->remove($quizSession);
+            $quizSession->setOver(true);
             $em->flush();
             $filename = 'quiz/' . $_POST["code"];
             $full_path = $this->get('kernel')->getRootDir() . '/../web/' . $filename;
@@ -121,7 +121,7 @@ class DefaultController extends Controller
                     $quizSessionCode = str_replace('#', '', $quizSessionCode);
                     $quizSession = $this->getDoctrine()->getRepository('DataBaseBundle:QuizSession')->findOneByCode($quizSessionCode);
 
-                    if($quizSession) {
+                    if(!$quizSession->getOver()) {
                         if ($quizSession->getDoneUsers()->contains($user)) {
                             $this->addFlash(
                                 'error',
@@ -140,7 +140,7 @@ class DefaultController extends Controller
                         if($quizSession->getEndDate() < $now) {
                             $this->addFlash(
                                 'error',
-                                'Le Quiz est fermé'
+                                'Le Quiz est terminé'
                             );
                             return $this->redirectToRoute('quiz');
                         }
@@ -149,7 +149,7 @@ class DefaultController extends Controller
                     else {
                         $this->addFlash(
                             'error',
-                            'Quiz Introuvable'
+                            'Quiz fermé'
                         );
                         return $this->redirectToRoute('quiz');
                     }
@@ -160,7 +160,7 @@ class DefaultController extends Controller
             else {
                 $quizSession = $this->getDoctrine()->getRepository('DataBaseBundle:QuizSession')->findOneByCode($id);
                 
-                if($quizSession) {
+                if(!$quizSession->getOver()) {
                     if ($quizSession->getDoneUsers()->contains($user)) {
                         $this->addFlash(
                             'error',
@@ -179,7 +179,7 @@ class DefaultController extends Controller
                     if($quizSession->getEndDate() < $now) {
                         $this->addFlash(
                             'error',
-                            'Le Quiz est fermé'
+                            'Le Quiz est terminé'
                         );
                         return $this->redirectToRoute('quiz');
                     }
@@ -187,7 +187,7 @@ class DefaultController extends Controller
                 else {
                     $this->addFlash(
                         'error',
-                        'Quiz Introuvable'
+                        'Quiz fermé'
                     );
                     return $this->redirectToRoute('quiz');
                 }

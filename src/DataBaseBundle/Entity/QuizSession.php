@@ -75,6 +75,13 @@ class QuizSession
      */
     protected $doneUsers;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="over", type="boolean", unique=true)
+     */
+    private $over;
+
     public function __construct()
     {
         $this->doneUsers = new ArrayCollection();
@@ -299,5 +306,29 @@ class QuizSession
     public function getDoneUsers()
     {
         return $this->doneUsers;
+    }
+
+    /**
+     * Set over
+     *
+     * @param boolean $over
+     *
+     * @return QuizSession
+     */
+    public function setOver($over)
+    {
+        $this->over = $over;
+    
+        return $this;
+    }
+
+    /**
+     * Get over
+     *
+     * @return boolean
+     */
+    public function getOver()
+    {
+        return $this->over;
     }
 }
