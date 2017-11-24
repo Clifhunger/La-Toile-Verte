@@ -15,7 +15,7 @@
             <section class="quiz" data-bind="visible: quizStarted() && !quizComplete() && !quizValidated()" style="height: 80vh; position: relative;">
                 <div>Question <span data-bind="text: currentQuestionIndex"></span> sur <span data-bind="text: questionCount"></span></div>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
+                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
                 </div>
                 <div class="question-pool"></div>
                 <div style="position: absolute; bottom: 0px; width: 100%;">

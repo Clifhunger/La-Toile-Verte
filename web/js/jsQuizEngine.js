@@ -27,7 +27,7 @@
 
             getCurrentQuiz(self.element).find('.answer').each(function (e, i) {
                 var elem = $(this),
-                    newAnswer = $('<label></label>').addClass('answer').append('<input type=\'checkbox\'/>').append($('<div></div>').html(elem.html()));
+                    newAnswer = $('<label></label>').addClass('answer').append('<input style="float: none;" type=\'checkbox\'/>').append($('<div></div>').html(elem.html()));
                 if (elem.is('[data-correct]')) {
                     newAnswer.attr('data-correct', '1');
                 }
