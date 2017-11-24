@@ -52,7 +52,7 @@ body {
 
 
 ul.social-network {
-    position: absolute;
+    position: fixed;
     right: 5px;
     top:35%;
     list-style: none;
@@ -212,13 +212,28 @@ a {
     ul.social-network {
         position: unset!important;
         display: block!important;
-        width: 300px!important;
+        width: 400px!important;
         margin: auto!important;
-        padding-top: 20px;
+        margin-top: 25px;
+        padding-top: 35px;
     }
     ul.social-network li {
         display: inline-flex!important;
 
+    }
+
+    .social-circle li a:hover, .triggeredHover {
+        transform: scale(1.5);
+        transition: all 0.2s;
+    }
+    .social-circle li a {
+        color: #fff;
+        transform: scale(1.4);
+        transition: all 0.2s;
+    }
+    ul.social-network li {
+        display: list-item;
+        margin: 15px 20px;
     }
 
 }

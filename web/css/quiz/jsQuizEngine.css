@@ -1,4 +1,50 @@
-﻿.question-pool {
+﻿#timer{
+  margin-top: 15px;
+}
+.text{
+  font-size: 2em;
+}
+.answer{
+  font-size: 1.2em;
+}
+@media screen and (max-width: 1150px) {
+  body{
+    background-image: none!important;
+  }
+  #timer{
+    font-size: 2em!important;
+  }
+  .timer{
+    font-size: 2em;
+    margin-bottom: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .contenuQuizz {
+    border-top: solid 2px forestgreen;
+    border-bottom: solid 2px forestgreen;
+
+    margin-bottom: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .text{
+    font-size: 3em;
+  }
+  .answer {
+
+    font-size: 2em;
+  }
+  .answer input{
+    height: 25px;
+    width: 25px;
+}
+  .contenuQuizz button{
+    font-size: 2em;
+  }
+}
+
+.question-pool {
   margin-bottom: 1em;
 }
 .question-pool .question .text {

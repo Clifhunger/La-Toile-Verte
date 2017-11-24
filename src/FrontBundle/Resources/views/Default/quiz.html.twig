@@ -2,7 +2,7 @@
 
 {% block connected_content %}
 {% if filename is defined %}
-    <div class="container">
+    <div class="container-fluid">
 
         <div id="jsQuizEngine" style="display: none;">
             <section id="title" data-bind="visible: !quizStarted()">
@@ -12,20 +12,34 @@
                     <p><button class="btn btn-primary btn-lg" data-bind="click: startQuiz">Commencer le quiz</button></p>
                 </div>
             </section>
-            <section class="quiz" data-bind="visible: quizStarted() && !quizComplete() && !quizValidated()" style="height: 80vh; position: relative;">
-                <div>Question <span data-bind="text: currentQuestionIndex"></span> sur <span data-bind="text: questionCount"></span></div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
+            <section class="quiz" data-bind="visible: quizStarted() && !quizComplete() && !quizValidated()" style="position: relative;">
+                <div class="row" style="margin-top: 70px;">
+                    <div class="col-lg-2 timer">
+                        <div style="font-size: 1.3em;">Question <span data-bind="text: currentQuestionIndex"></span> sur <span data-bind="text: questionCount"></span></div>
+
+                        <div class="progress">
+                            <div style="background-color: forestgreen;" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
+                        </div>
+                        <h4 style="margin-top: 10px;"><span id="timer" class="badge  badge-primary" style=" font-size: 0.9em;background-color: forestgreen;" data-bind="visible: quizCertified(), text: timerText"></span></h4>
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-7 contenuQuizz">
+
+                        <div class="form-group">
+                            <div class="question-pool"></div>
+                            <div >
+                                <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
+                                <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
+                                <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
+                                <input type="hidden" name="id" id="sessionId" value="{{ id }}">
+                                <button type="submit" class="btn btn-primary" data-bind="click: validateResults, visible: currentQuestionIsLast">Terminer le quiz</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="question-pool"></div>
-                <div style="position: absolute; bottom: 0px; width: 100%;">
-                    <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
-                    <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
-                    <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
-                    <input type="hidden" name="id" id="sessionId" value="{{ id }}">
-                    <button type="submit" class="btn btn-primary" data-bind="click: validateResults, visible: currentQuestionIsLast">Terminer le quiz</button>
-                    <h4 style="display: inline;position: absolute; right: 0px;"><span id="timer" class="badge badge-pill badge-primary" style="transition: 1s ease-in;" data-bind="visible: quizCertified(), text: timerText"></span></h4>
-                </div>
+
             </section>
             <section class="score" data-bind="visible: quizValidated() && !quizComplete()">
                 <h1>Le quiz est terminé</h1>
