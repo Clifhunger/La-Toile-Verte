@@ -2,81 +2,105 @@
 
 {% block connected_content %}
 {% if filename is defined %}
-    <div class="container-fluid">
+
 
         <div id="jsQuizEngine" style="display: none;">
-            <section id="title" data-bind="visible: !quizStarted()">
-                <div class="jumbotron">
-                    <h1 data-bind="text: quizTitle"></h1>
-                    <p data-bind="text: quizSubTitle"></p>
-                    <p><button class="btn btn-primary btn-lg" data-bind="click: startQuiz">Commencer le quiz</button></p>
-                </div>
-            </section>
-            <section class="quiz" data-bind="visible: quizStarted() && !quizComplete() && !quizValidated()" style="position: relative;">
-                <div class="row" style="margin-top: 70px;">
-                    <div class="col-lg-2 timer">
-                        <div style="font-size: 1.3em;">Question <span data-bind="text: currentQuestionIndex"></span> sur <span data-bind="text: questionCount"></span></div>
+            <div class="container-fluid">
+                <section id="title" data-bind="visible: !quizStarted()">
+                    <div class="jumbotron">
+                        <h1 data-bind="text: quizTitle"></h1>
+                        <p data-bind="text: quizSubTitle"></p>
+                        <p><button class="btn btn-primary btn-lg" data-bind="click: startQuiz">Commencer le quiz</button></p>
+                    </div>
+                </section>
+                <section class="quiz" data-bind="visible: quizStarted() && !quizComplete() && !quizValidated()" style="position: relative;">
+                    <div class="row" style="margin-top: 70px;">
+                        <div class="col-lg-2 timer">
+                            <div style="font-size: 1.3em;">Question <span data-bind="text: currentQuestionIndex"></span> sur <span data-bind="text: questionCount"></span></div>
 
-                        <div class="progress">
-                            <div style="background-color: forestgreen;" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
+                            <div class="progress">
+                                <div style="background-color: forestgreen;" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': currentProgress }, style: { width: currentProgress() + '%' }"></div>
+                            </div>
+                            <h4 style="margin-top: 10px;"><span id="timer" class="badge  badge-primary" style=" font-size: 0.9em;background-color: forestgreen;" data-bind="visible: quizCertified(), text: timerText"></span></h4>
                         </div>
-                        <h4 style="margin-top: 10px;"><span id="timer" class="badge  badge-primary" style=" font-size: 0.9em;background-color: forestgreen;" data-bind="visible: quizCertified(), text: timerText"></span></h4>
-                    </div>
-                    <div class="col-lg-1">
-                    </div>
-                    <div class="col-lg-7 contenuQuizz">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-7 contenuQuizz">
 
-                        <div class="form-group">
-                            <div class="question-pool"></div>
-                            <div >
-                                <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
-                                <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
-                                <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
-                                <input type="hidden" name="id" id="sessionId" value="{{ id }}">
-                                <button type="submit" class="btn btn-primary" data-bind="click: validateResults, visible: currentQuestionIsLast">Terminer le quiz</button>
+                            <div class="form-group">
+                                <div class="question-pool"></div>
+                                <div >
+                                    <button class="btn btn-default" data-bind="click: movePreviousQuestion, disable: currentQuestionIsFirst">Précédente</button>
+                                    <button class="btn btn-default" data-bind="click: showCurrentQuestionHint, visible: currentQuestionHasHint()">Voir un indice</button>
+                                    <button class="btn btn-primary" data-bind="click: moveNextQuestion, disable: currentQuestionIsLast, visible: !currentQuestionIsLast()">Suivante</button>
+                                    <input type="hidden" name="id" id="sessionId" value="{{ id }}">
+                                    <button type="submit" class="btn btn-primary" data-bind="click: validateResults, visible: currentQuestionIsLast">Terminer le quiz</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+                <section class="score" data-bind="visible: quizValidated() && !quizComplete()">
+                    <h1>Le quiz est terminé</h1>
+                    <button class="btn btn-primary" data-bind="click: getResults">Voir les résultats</button>
+                </section>
+            </div>
+            <div class="container">
+                <section class="score" data-bind="visible: quizComplete()">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-lg-6">
+
+                          <h4> Vous avez passé le quizz <span  data-bind="text: quizTitle"></span></h4>
+                            <h4>Résultat: <span data-bind="text: totalQuestionsCorrect"></span>/<span data-bind="text: questionCount"></span></h4>
+                        </div>
+                        <div class="col-lg-6">
+                            <form class="pass-indicator" action="{{ id }}/getCertif" method="get" target="_blank">
+                                <h1 data-bind="css: { 'text-success': quizPassed, 'text-danger': !quizPassed() }">
+                                    <input type="hidden" name="date" data-bind="value: calculatedScoreDate">
+                                    <input type="hidden" name="percent" data-bind="value: calculatedScore">
+                                    <span data-bind="visible: quizPassed">RÉUSSI </span>
+                                    <button data-bind="visible: quizCertified(), visible: quizPassed" class="btn btn-primary" type="submit" style="font-size: normal;">Récupérer ma certification <i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
+                                    <span data-bind="visible: !quizPassed()">RATÉ</span>
+                                </h1>
+                            </form>
+                        </div>
+                        <!--
+                    <p>Résultat :</p>
+                    <h2 data-bind="text: quizTitle"></h2>
+                    <h3 data-bind="text: quizSubTitle"></h3>
+                    <div>Date: <span data-bind="text: calculatedScoreDate"></span></div>
+                    <div>Score Total: <span data-bind="text: calculatedScore"></span>%</div>
+                    <div>Bonnes Réponses: <span data-bind="text: totalQuestionsCorrect"></span></div>
+                    <form class="pass-indicator" action="{{ id }}/getCertif" method="get" target="_blank">
+                        <h1 data-bind="css: { 'text-success': quizPassed, 'text-danger': !quizPassed() }">
+                            <input type="hidden" name="date" data-bind="value: calculatedScoreDate">
+                            <input type="hidden" name="percent" data-bind="value: calculatedScore">
+                            <span data-bind="visible: quizPassed">RÉUSSI <button data-bind="visible: quizCertified()" class="btn btn-primary" type="submit" style="font-size: normal;">Récupérer ma certification</button></span>
+                            <span data-bind="visible: !quizPassed()">RATÉ</span>
+                        </h1>
+                    </form>
+                    -->
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-12">
+                            <div class="solutions">
+                                <div data-bind="foreach: { data: questions, as: 'question' }">
+                                    <h4>
+                                        Question <span data-bind="text: question.index"></span> (
+                                        <span data-bind="css: {'text-success': question.correct }, visible: question.correct">Correcte</span>
+                                        <span data-bind="css: {'text-danger': !question.correct }, visible: !question.correct">Fausse</span>
+                                        )
+                                    </h4>
+                                    <div data-bind="attr: {'id': 'solution-' + question.index}"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-
-            </section>
-            <section class="score" data-bind="visible: quizValidated() && !quizComplete()">
-                <h1>Le quiz est terminé</h1>
-                <button class="btn btn-primary" data-bind="click: getResults">Voir les résultats</button>
-            </section>
-            <section class="score" data-bind="visible: quizComplete()">
-                <p>Résultat :</p>
-                <h2 data-bind="text: quizTitle"></h2>
-                <h3 data-bind="text: quizSubTitle"></h3>
-                <div>Questions: <span data-bind="text: questionCount"></span></div>
-                <div>Date: <span data-bind="text: calculatedScoreDate"></span></div>
-                <div>Score Total: <span data-bind="text: calculatedScore"></span>%</div>
-                <div>Bonnes Réponses: <span data-bind="text: totalQuestionsCorrect"></span></div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-bind="attr: { 'aria-valuenow': calculatedScore }, style: { width: calculatedScore() + '%' }, css: { 'progress-bar-success': quizPassed, 'progress-bar-danger': !quizPassed() }"></div>
-                </div>
-                <form class="pass-indicator" action="{{ id }}/getCertif" method="get" target="_blank">
-                    <h1 data-bind="css: { 'text-success': quizPassed, 'text-danger': !quizPassed() }">
-                        <input type="hidden" name="date" data-bind="value: calculatedScoreDate">
-                        <input type="hidden" name="percent" data-bind="value: calculatedScore">
-                        <span data-bind="visible: quizPassed">RÉUSSI <button data-bind="visible: quizCertified()" class="btn btn-primary" type="submit" style="font-size: normal;">Récupérer ma certification</button></span>
-                        <span data-bind="visible: !quizPassed()">RATÉ</span>
-                    </h1>
-                </form>
-                <div class="solutions">
-                    <div data-bind="foreach: { data: questions, as: 'question' }">
-                        <h3>
-                            Question <span data-bind="text: question.index"></span> (
-                            <span data-bind="css: {'text-success': question.correct }, visible: question.correct">Correcte</span>
-                            <span data-bind="css: {'text-danger': !question.correct }, visible: !question.correct">Fausse</span>
-                            )
-                        </h3>
-                    <div data-bind="attr: {'id': 'solution-' + question.index}"></div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
-    </div>
 {% else %}
 <div class="SansArticle">
         {{ form_start(form) }}

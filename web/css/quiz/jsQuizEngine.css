@@ -92,6 +92,13 @@
 }
 
 .score .pass-indicator h1 {
-  font-size: 10em;
+  font-size: 5em;
 }
 /*# sourceMappingURL=jsQuizEngine.css.map */
+
+.solutions .text{
+  font-size: 1.3em;
+}
+.solutions .answer{
+  font-size: 1em;
+}
