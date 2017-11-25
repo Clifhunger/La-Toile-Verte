@@ -102,3 +102,11 @@
 .solutions .answer{
   font-size: 1em;
 }
+
+.FinQuizz{
+  width: 400px;
+  margin: auto;
+  margin-top: 200px;
+  position: relative;
+  text-align: center;
+}
