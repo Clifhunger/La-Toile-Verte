@@ -51,9 +51,9 @@
                 <section class="score" data-bind="visible: quizComplete()">
                     <div class="row" style="margin-bottom: 15px;">
                         <div class="col-lg-6">
-
-                          <h4> Vous avez passé le quizz <span  data-bind="text: quizTitle"></span></h4>
+                            <h4> Vous avez passé le quizz <span  data-bind="text: quizTitle"></span></h4>
                             <h4>Résultat: <span data-bind="text: totalQuestionsCorrect"></span>/<span data-bind="text: questionCount"></span></h4>
+                            <div>Date: <span data-bind="text: calculatedScoreDate"></span></div>
                         </div>
                         <div class="col-lg-6">
                             <form class="pass-indicator" action="{{ id }}/getCertif" method="get" target="_blank">
