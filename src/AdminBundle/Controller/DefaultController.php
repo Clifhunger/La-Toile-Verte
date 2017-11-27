@@ -84,19 +84,18 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && 'save' === $form->getClickedButton()->getName()) {
             $image = $form["image"]->getData();
             $length=strripos($image,".")-strripos($image,"\\");
-            $nom=substr($image,strripos($image,"\\"),$length);
+            $nom=substr($image,strripos($image,"\\")+1,$length-1);
 
             if ( $nom!="" ) {
                 $image = $form["image"]->getData();
-                $lien=$this->get('kernel')->getRootDir() . "\..\web\articles\img";
+                $lien=$this->get('kernel')->getRootDir() . "\..\web\articles\img\\";
 
                 $nom=$nom.".png";
 
-                $article->setImage($lien.$nom);
+                $article->setImage($nom);
                 move_uploaded_file( $image , $lien.$nom );
             } else {
                 $article->setImage($image_before);
-                $article->setDescription($image_before);
             }
 
             $article->setLikes(0);
@@ -137,14 +136,14 @@ class DefaultController extends Controller
         if ($form->isSubmitted()) {
 
             $image = $form["image"]->getData();
-            $lien=$this->get('kernel')->getRootDir() . "\..\web\articles\img";
+            $lien=$this->get('kernel')->getRootDir() . "\..\web\articles\img\\";
 
             $length=strripos($image,".")-strripos($image,"\\");
-            $nom=substr($image,strripos($image,"\\"),$length);
+            $nom=substr($image,strripos($image,"\\")+1,$length-1);
             $nom=$nom.".png";
 
             $article->setLikes(0);
-            $article->setImage($lien.$nom);
+            $article->setImage($nom);
 
             $em->persist($article);
             $em->flush();
