@@ -166,7 +166,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($quiz)
             ->add('label', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
-            ->add('certified', CheckBoxType::class, array('label' => 'Certifiant'))
+            ->add('certified', CheckBoxType::class, array('label' => 'Certifiant', 'required' => false, 'empty_data' => null))
             ->add('save', SubmitType::class, array('label' => 'Créer quiz'))
             ->getForm();
 
@@ -230,7 +230,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($quiz)
             ->add('label', TextType::class, array('label' => 'Titre'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
-            ->add('certified', CheckBoxType::class, array('label' => 'Certifiant'))
+            ->add('certified', CheckBoxType::class, array('label' => 'Certifiant', 'required' => false, 'empty_data' => null))
             ->add('save', SubmitType::class, array('label' => 'Modifier quiz'))
             ->getForm();
 
