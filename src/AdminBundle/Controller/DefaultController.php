@@ -5,6 +5,7 @@ namespace AdminBundle\Controller;
 use DataBaseBundle\Entity\Article;
 use DataBaseBundle\Entity\Question;
 use DataBaseBundle\Entity\Quiz;
+use DataBaseBundle\Entity\MyOption;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -173,6 +174,19 @@ class DefaultController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $em->persist($quiz);
+            $questionCount = $request->request->get('questionsCount');
+            for ($i = 0; $i < $questionCount; $i++) {
+                $question = new Question();
+                $question->setLabel($request->request->get('label' . $i))->setQuiz($quiz);
+                for ($j = 0; $j < 4; $j++) {
+                    $option = new MyOption();
+                    $option->setValue($request->request->get('option' . $i . $j))->setAnswer($request->request->get('answer' . $i . $j) != null ? true : false);
+                    $question->addOption($option);
+                    $option->setQuestion($question);
+                    $em->persist($option);
+                }
+                $em->persist($question);
+            }
             $em->flush();
             return $this->redirectToRoute('admin_quiz');
         }
@@ -187,35 +201,6 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $quiz = $em->getRepository('DataBaseBundle:Quiz')->findAll();
         return $this->render('AdminBundle:Default:quiz.html.twig', array('quizs' => $quiz));
-    }
-
-    /**
-     *  @Route("/admin/createQuestion", name="create_question")
-     */
-    public function createQuestionAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $allQuiz = $em->getRepository('DataBaseBundle:Quiz')->findAll();
-        $question = new Question();
-
-        $form = $this->createFormBuilder($question)
-            ->add('quiz', ChoiceType::class, array(
-                'label' => 'Quiz',
-                'choices'  => $allQuiz,
-                'choice_label' => 'label',
-                'required' => true,))
-            ->add('label', TextType::class, array('label' => 'Titre'))
-            ->add('description', TextareaType::class, array('label' => 'Description'))
-            ->add('save', SubmitType::class, array('label' => 'Créer question'))
-            ->getForm();
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted()) {
-            $em->persist($question);
-            $em->flush();
-            return $this->redirectToRoute('admin_quiz');
-        }
-        return $this->render('AdminBundle:Default:createQuestion.html.twig', array('form' => $form->createView()));
     }
 
     /**

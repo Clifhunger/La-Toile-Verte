@@ -25,6 +25,9 @@
         {{ form_label(form.certified) }}
         {{ form_widget(form.certified) }}
     </div>
+    <input type="hidden" name="questionsCount" id="questionsCount" value="0">
+    <button type="button" id="moreFields">Ajouter une question</button>
+    <div id="writeroot"></div>
     <div class="form-group">
         <div class="col-sm-offset-4 col-sm-6">
             {{ form_label(form.save,null) }}
@@ -33,4 +36,72 @@
     </div>
 
     {{ form_end(form) }}
+    <div id="readroot" style="display: none">
+    
+        <input type="button" value="X" onclick="if(counter != 1){this.parentNode.parentNode.removeChild(this.parentNode);counter--;questionsCount.value = counter;ordering()}else{alert('Vous devez mettre au moins une question');}" />
+        <label for="label"></label>
+        <input name="label0"/ required>
+        <br/>
+        <input name="option0"/ required>
+        <input type="checkbox" name="answer0"/>
+        <input name="option1"/ required>
+        <input type="checkbox" name="answer1"/>
+        <input name="option2"/ required>
+        <input type="checkbox" name="answer2"/>
+        <input name="option3"/ required>
+        <input type="checkbox" name="answer3"/>
+    
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    var counter = 0;
+    var questionsCount = document.getElementById('questionsCount');
+    var newField;
+    var insertHere
+    
+    function moreFields() {
+        counter++;
+        var newFields = document.getElementById('readroot').cloneNode(true);
+        questionsCount.value = counter;
+        newFields.id = '';
+        newFields.style.display = 'block';
+        insertHere = document.getElementById('writeroot');
+        insertHere.appendChild(newFields);
+        newField = insertHere.childNodes;
+        ordering();
+        
+    }
+
+    var questionsLabel;
+    function ordering() {
+        questionsLabel = insertHere.getElementsByTagName('label');
+        for (var i=0; i < questionsLabel.length; i++) {
+            questionsLabel[i].innerHTML = 'Question' + (i+1) + ' :';
+        }
+        for (var i=0;i<newField.length;i++) {
+            var question = newField[i].childNodes;
+            var x = 0;
+            var z = 0;
+            for (var j=0;j<question.length;j++) {
+                var theName = question[j].name
+                if (theName) {
+                    theName = theName.replace(/\d+/, i.toString());
+                    theName = theName.replace(/option\d+/, 'option' + i + x );
+                    if (theName.indexOf('option') !== -1)
+                        x++;
+                    theName = theName.replace(/answer\d+/, 'answer' + i + z );
+                    if (theName.indexOf('answer') !== -1)
+                        z++;
+                    question[j].name = theName;
+                }
+            }
+        }
+    }
+
+    document.getElementById('moreFields').onclick = moreFields;
+    
+    window.onload = moreFields;
+</script>
 {% endblock %}

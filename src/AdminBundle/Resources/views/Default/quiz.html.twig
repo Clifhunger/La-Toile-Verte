@@ -22,7 +22,7 @@
                                     <td>{{ quiz.id }}</td>
                                     <td>{{ quiz.label }}</td>
                                     <td>{{ quiz.description }}</td>
-                                    <td>{{ quiz.certified }}</td>
+                                    <td>{% if quiz.certified == 1 %}Oui{% else %}Non{% endif %}</td>
                                     <td><a href="quiz/id={{ quiz.id }}"><button>Modifier</button></a></td>
                                 </tr>
                             {% endfor %}
@@ -33,6 +33,5 @@
             </div>
             <div class="row">
                 <a href="{{ path('create_quiz') }}"><button>Créer quiz</button></a>
-                <a href="{{ path('create_question') }}"><button>Créer question</button></a>
             </div>
 {% endblock %}
